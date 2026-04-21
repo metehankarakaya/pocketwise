@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
+import 'package:pocketwise/features/settings/screens/settings_screen.dart';
 import 'package:pocketwise/features/transaction/widgets/add_transaction_modal.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_list_item.dart';
 import 'package:pocketwise/features/dashboard/widgets/transaction_summary_card.dart';
@@ -23,7 +24,12 @@ class DashboardScreen extends ConsumerWidget {
         title: Text("Pocket Wise"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsScreen())
+              );
+            },
             icon: Icon(Icons.settings),
           )
         ],
