@@ -15,7 +15,7 @@ class TransactionTypeButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 12.0),
         decoration: BoxDecoration(
-          color: isSelected ? color : Colors.grey.shade100,
+          color: isSelected ? color : Colors.grey.shade500,
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
             color: isSelected ? Colors.transparent : Colors.grey.shade300,

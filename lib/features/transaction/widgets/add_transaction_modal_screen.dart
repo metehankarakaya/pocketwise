@@ -56,7 +56,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
       child: Column(
         mainAxisSize: .min,
         children: [
-          Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(10))),
+          Container(width: 40, height: 4, decoration: BoxDecoration(borderRadius: BorderRadius.circular(10))),
           SizedBox(height: 8.0,),
           Text("Yeni İşlem Ekle", style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
           TextField(
@@ -110,7 +110,6 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
               return ChoiceChip(
                 showCheckmark: false,
                 selected: _selectedCategory == c,
-                selectedColor: Colors.indigo.shade100,
                 onSelected: (val) => setState(() => _selectedCategory = val ? c : null),
                 label: Text(c),
               );
@@ -122,7 +121,6 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
             decoration: InputDecoration(
               hintText: "İşlem Başlığı (İsteğe bağlı)",
               filled: true,
-              fillColor: Colors.grey.shade50,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide.none
@@ -134,9 +132,6 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
             width: double.infinity,
             height: 56,
             decoration: BoxDecoration(
-              gradient: _isFormValid
-                ? const LinearGradient(colors: [Color(0xFF6366F1), Color(0xFFA855F7)])
-                : LinearGradient(colors: [Colors.grey.shade300, Colors.grey.shade300]),
               borderRadius: BorderRadius.circular(16),
             ),
             child: ElevatedButton(
@@ -150,13 +145,11 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
               }
               : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
               child: const Text(
                 "İŞLEMİ KAYDET",
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
               ),
             ),
           ),
