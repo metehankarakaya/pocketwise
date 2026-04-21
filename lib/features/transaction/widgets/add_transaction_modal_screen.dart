@@ -48,25 +48,52 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
 
   @override
   Widget build(BuildContext context) {
+
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Container(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom + 20,
         top: 20, left: 20, right: 20,
       ),
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+      ),
       child: Column(
         mainAxisSize: .min,
         children: [
-          Container(width: 40, height: 4, decoration: BoxDecoration(borderRadius: BorderRadius.circular(10))),
-          SizedBox(height: 8.0,),
-          Text("Yeni İşlem Ekle", style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+          Container(
+            width: 40,
+            height: 4,
+            decoration: BoxDecoration(
+              color: colorScheme.onSurfaceVariant.withValues(alpha: 0.3),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text("Yeni İşlem Ekle", style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            color: colorScheme.onSurface,
+            fontWeight: FontWeight.bold
+          )),
           TextField(
             controller: _amountController,
             onChanged: (_) => setState(() {}),
             autofocus: true,
             textAlign: TextAlign.center,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, letterSpacing: -1),
-            decoration: const InputDecoration(hintText: "₺0,00", border: InputBorder.none,),
+            style: TextStyle(
+              fontSize: 48,
+              fontWeight: FontWeight.bold,
+              letterSpacing: -1,
+              color: colorScheme.onSurface,
+            ),
+            decoration: InputDecoration(
+              hintText: "₺0,00",
+              hintStyle: TextStyle(color: colorScheme.onSurfaceVariant.withValues(alpha: 0.5)),
+              border: InputBorder.none,
+            ),
             inputFormatters: [
               FilteringTextInputFormatter.digitsOnly,
               _IntlAmountFormatter(_formatter),
@@ -110,17 +137,24 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
               return ChoiceChip(
                 showCheckmark: false,
                 selected: _selectedCategory == c,
+                selectedColor: colorScheme.primaryContainer,
                 onSelected: (val) => setState(() => _selectedCategory = val ? c : null),
                 label: Text(c),
+                labelStyle: TextStyle(
+                  color: _selectedCategory == c ? colorScheme.onPrimaryContainer : colorScheme.onSurface
+                ),
               );
             }).toList(),
           ),
           const SizedBox(height: 20),
           TextField(
             controller: _titleController,
+            style: TextStyle(color: colorScheme.onSurface),
             decoration: InputDecoration(
               hintText: "İşlem Başlığı (İsteğe bağlı)",
+              hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
               filled: true,
+              fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide.none
@@ -133,6 +167,10 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
             height: 56,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
+              gradient: _isFormValid
+                ? LinearGradient(colors: [colorScheme.primary, colorScheme.secondary])
+                : null,
+              color: _isFormValid ? null : colorScheme.surfaceContainerHighest
             ),
             child: ElevatedButton(
               onPressed: _isFormValid
@@ -145,6 +183,9 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
               }
               : null,
               style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                foregroundColor: _isFormValid ? colorScheme.onPrimary : colorScheme.onSurfaceVariant,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
               child: const Text(
