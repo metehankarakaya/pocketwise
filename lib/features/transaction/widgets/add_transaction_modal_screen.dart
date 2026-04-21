@@ -28,7 +28,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
       _amountController.text != "₺0,00";
   }
 
-  final List<String> _categories = ["Gıda", "Market", "Ulaşım", "Fatura", "Eğlence", "Sağlık", "Eğitim", "Giyim", "Teknoloji", "Abonelik"];
+  final List<String> _categories = ["Gıda", "Market", "Ulaşım", "Fatura", "Abonelik", "Eğlence", "Sağlık", "Giyim", "Teknoloji", "Eğitim"];
 
   @override
   void initState() {
