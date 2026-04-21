@@ -43,12 +43,16 @@ class TransactionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final formattedAmount = formatter.format(transactionModel.amount);
-
     final formattedTime = timeFormat.format(transactionModel.createdAt);
 
     final bool isExpense = transactionModel.type == TransactionType.expense;
     final categoryColor = _colorForCategory(transactionModel.category);
+
+    final Color amountColor = isExpense
+      ? Colors.redAccent.shade400
+      : const Color(0xFF10B981);
 
     return ListTile(
       leading: Container(
@@ -68,13 +72,22 @@ class TransactionListItem extends StatelessWidget {
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: isExpense ? Colors.redAccent.shade400 : const Color(0xFF10B981),
+          color: amountColor,
         ),
       ),
       title: Text(
-        transactionModel.title.isEmpty ? transactionModel.category : transactionModel.title
+        transactionModel.title.trim().isEmpty ? transactionModel.category : transactionModel.title,
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: colorScheme.onSurface,
+        ),
       ),
-      subtitle: Text(formattedTime),
+      subtitle: Text(
+        formattedTime,
+        style: TextStyle(
+          color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+        ),
+      ),
     );
   }
 }
