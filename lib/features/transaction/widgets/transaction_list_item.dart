@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 
