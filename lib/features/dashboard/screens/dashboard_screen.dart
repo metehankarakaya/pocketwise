@@ -127,7 +127,11 @@ class DashboardScreen extends ConsumerWidget {
               SizedBox(width: double.infinity, child: Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,)),
               Column(
                 children: filteredTransactions.map((transaction) {
-                  return TransactionListItem(transactionModel: transaction);
+                  return Dismissible(
+                    key: Key(transaction.id),
+                    onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(transaction.id),
+                    child: TransactionListItem(transactionModel: transaction)
+                  );
                 }).toList(),
               ),
             ],
