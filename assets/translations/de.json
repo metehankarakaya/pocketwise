@@ -37,6 +37,11 @@
   "daily": "Täglich",
   "weekly": "Wöchentlich",
   "monthly": "Monatlich",
-  "yearly": "Jährlich"
+  "yearly": "Jährlich",
+
+  "today": "Heute",
+  "week": "Diese Woche",
+  "month": "Dieser Monat",
+  "year": "Dieses Jahr"
 
 }

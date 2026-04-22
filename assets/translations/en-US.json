@@ -37,6 +37,11 @@
   "daily": "Daily",
   "weekly": "Weekly",
   "monthly": "Monthly",
-  "yearly": "Yearly"
+  "yearly": "Yearly",
+
+  "today": "Today",
+  "week": "This Week",
+  "month": "This Month",
+  "year": "This Year"
 
 }

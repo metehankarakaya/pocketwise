@@ -37,6 +37,11 @@
   "daily": "Günlük",
   "weekly": "Haftalık",
   "monthly": "Aylık",
-  "yearly": "Yıllık"
+  "yearly": "Yıllık",
+
+  "today": "Bugün",
+  "week": "Bu Hafta",
+  "month": "Bu Ay",
+  "year": "Bu Yıl"
 
 }

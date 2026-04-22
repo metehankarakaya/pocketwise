@@ -37,6 +37,11 @@
   "daily": "Diario",
   "weekly": "Semanal",
   "monthly": "Mensual",
-  "yearly": "Anual"
+  "yearly": "Anual",
+
+  "today": "Hoy",
+  "week": "Esta semana",
+  "month": "Este mes",
+  "year": "Este año"
 
 }

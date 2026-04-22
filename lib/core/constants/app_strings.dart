@@ -38,4 +38,9 @@ class AppStrings {
   static const String monthly = "monthly";
   static const String yearly = "yearly";
 
+  static const String today = "today";
+  static const String week = "week";
+  static const String month = "month";
+  static const String year = "year";
+
 }
