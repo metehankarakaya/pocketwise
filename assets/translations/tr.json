@@ -20,8 +20,23 @@
   "education": "Eğitim",
 
   "addNewTransaction": "Yeni İşlem Ekle",
-  "transactionTitleHint": "İşlem Başlığı (İsteğe bağlı)",
+  "transactionTitleHintOptional": "İşlem Başlığı (İsteğe bağlı)",
+  "transactionTitleHint": "İşlem Başlığı",
   "saveButton": "İŞLEMİ KAYDET",
   "transactionIncome": "Gelir",
-  "transactionExpense": "Gider"
+  "transactionExpense": "Gider",
+
+  "instantTransactionTitle": "Anlık İşlem",
+  "recurringTransactionTitle": "Tekrarlayan İşlem",
+
+  "startDate": "Başlangıç Tarihi",
+  "pickStartDate": "Başlangıç Tarihi Seçin",
+  "endDateOptional": "Bitiş Tarihi (İsteğe bağlı)",
+  "pickEndDate": "Bitiş Tarihi Seçin",
+
+  "daily": "Günlük",
+  "weekly": "Haftalık",
+  "monthly": "Aylık",
+  "yearly": "Yıllık"
+
 }

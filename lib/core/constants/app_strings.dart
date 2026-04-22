@@ -20,8 +20,22 @@ class AppStrings {
   static const String education = "education";
 
   static const String addNewTransaction = "addNewTransaction";
+  static const String transactionTitleHintOptional = "transactionTitleHintOptional";
   static const String transactionTitleHint = "transactionTitleHint";
   static const String saveButton = "saveButton";
   static const String transactionIncome = "transactionIncome";
   static const String transactionExpense = "transactionExpense";
+
+  static const String instantTransactionTitle = "instantTransactionTitle";
+  static const String recurringTransactionTitle = "recurringTransactionTitle";
+  static const String startDate = "startDate";
+  static const String pickStartDate = "pickStartDate";
+  static const String endDateOptional = "endDateOptional";
+  static const String pickEndDate = "pickEndDate";
+
+  static const String daily = "daily";
+  static const String weekly = "weekly";
+  static const String monthly = "monthly";
+  static const String yearly = "yearly";
+
 }

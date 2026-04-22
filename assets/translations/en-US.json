@@ -20,8 +20,23 @@
   "education": "Education",
 
   "addNewTransaction": "Add New Transaction",
-  "transactionTitleHint": "Transaction Title (Optional)",
+  "transactionTitleHintOptional": "Transaction Title (Optional)",
+  "transactionTitleHint": "Transaction Title",
   "saveButton": "SAVE TRANSACTION",
   "transactionIncome": "Income",
-  "transactionExpense": "Expense"
+  "transactionExpense": "Expense",
+
+  "instantTransactionTitle": "Instant Transaction",
+  "recurringTransactionTitle": "Recurring Transaction",
+
+  "startDate": "Start Date",
+  "pickStartDate": "Select Start Date",
+  "endDateOptional": "End Date (Optional)",
+  "pickEndDate": "Select End Date",
+
+  "daily": "Daily",
+  "weekly": "Weekly",
+  "monthly": "Monthly",
+  "yearly": "Yearly"
+
 }
