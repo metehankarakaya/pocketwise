@@ -5,6 +5,8 @@ class AppStrings {
   static const String totalBalance = "totalBalance";
   static const String settingsTitle = "settingsTitle";
   static const String changeLanguage = "changeLanguage";
+  static const String clearAllTransactions = "clearAllTransactions";
+  static const String wasCleared = "wasCleared";
 
   static const String food = "food";
   static const String groceries = "groceries";

@@ -5,6 +5,8 @@
   "totalBalance": "Balance Total",
   "settingsTitle": "Configuración",
   "changeLanguage": "Cambiar idioma",
+  "clearAllTransactions": "Eliminar todas las transacciones",
+  "wasCleared": "Se eliminaron todas las transacciones",
 
   "food": "Comida",
   "groceries": "Supermercado",

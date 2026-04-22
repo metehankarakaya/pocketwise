@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
 
 import '../../../core/constants/app_strings.dart';
 import '../../../core/providers/theme_provider.dart';
@@ -29,10 +30,25 @@ class SettingsScreen extends ConsumerWidget {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
             SettingsItem(
               onTap: () => ChangeLanguageModal.show(context),
               title: AppStrings.changeLanguage.tr(),
+            ),
+            SettingsItem(
+              onTap: () {
+                ref.read(transactionProvider.notifier).clearAllTransactions();
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(AppStrings.wasCleared.tr()),
+                    backgroundColor: Colors.green.shade400,
+                    behavior: SnackBarBehavior.floating,
+                    duration: Duration(seconds: 2),
+                  )
+                );
+              },
+              title: AppStrings.clearAllTransactions.tr(),
             ),
           ],
         ),

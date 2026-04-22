@@ -5,6 +5,8 @@
   "totalBalance": "Gesamtguthaben",
   "settingsTitle": "Einstellungen",
   "changeLanguage": "Sprache ändern",
+  "clearAllTransactions": "Alle Transaktionen löschen",
+  "wasCleared": "Alle Transaktionen wurden gelöscht",
 
   "food": "Essen",
   "groceries": "Lebensmittel",

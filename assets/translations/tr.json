@@ -5,6 +5,8 @@
   "totalBalance": "Toplam Bakiye",
   "settingsTitle": "Ayarlar",
   "changeLanguage": "Dil Değiştir",
+  "clearAllTransactions": "Tüm İşlemleri Sil",
+  "wasCleared": "Tüm işlemler silindi",
 
   "food": "Gıda",
   "groceries": "Market",
