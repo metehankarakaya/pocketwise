@@ -20,7 +20,6 @@ class DashboardScreen extends ConsumerWidget {
     final notifier = ref.watch(transactionProvider.notifier);
     final transactions = ref.watch(transactionProvider);
 
-    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(AppStrings.appName.tr()),
@@ -43,12 +42,9 @@ class DashboardScreen extends ConsumerWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: SizedBox(
-                  width: size.width/2,
-                  child: Card(
-                    child: ListTile(
-                      title: Text(AppStrings.homeGreeting.tr()),
-                    ),
+                child: Card(
+                  child: ListTile(
+                    title: Text(AppStrings.homeGreeting.tr()),
                   ),
                 ),
               ),
