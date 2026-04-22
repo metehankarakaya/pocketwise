@@ -1,16 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 
-class TransactionSummaryCard extends StatelessWidget {
+import '../providers/dashboard_provider.dart';
+
+class TransactionSummaryCard extends ConsumerWidget {
   final TransactionType type;
   final double amount;
 
   const TransactionSummaryCard({super.key, required this.type, required this.amount});
 
+  static final formatter = NumberFormat.currency(locale: 'tr_TR', symbol: '₺');
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final dashboard = ref.watch(dashboardProvider);
+
+    final formattedAmount = formatter.format(amount);
     final isIncome = type == TransactionType.income;
 
     final icon = isIncome
@@ -40,7 +48,11 @@ class TransactionSummaryCard extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Text(title),
-            Text("₺${amount.toStringAsFixed(2)}"),
+            Text(
+              dashboard
+              ? "₺******"
+              : formattedAmount
+            ),
           ],
         )
       ],
