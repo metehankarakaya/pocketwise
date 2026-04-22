@@ -20,13 +20,15 @@ class TransactionProvider extends Notifier<List<TransactionModel>>{
     final String? savedData = _prefs.getString("transactions");
     if (savedData != null) {
       final List<dynamic> decodedData = jsonDecode(savedData);
-      state = decodedData.reversed.map((element) => TransactionModel.fromJson((element))).toList();
+      state = decodedData.map((element) => TransactionModel.fromJson((element))).toList();
+      state.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     }
   }
 
   void addTransaction(String title, double amount, String category, DateTime createdAt, TransactionType type) async {
     TransactionModel transactionModel = TransactionModel(id: const Uuid().v4(), title: title, amount: amount, category: category, createdAt: createdAt, type: type);
     state = [transactionModel, ... state];
+    state.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     final String encodedData = jsonEncode(state.map((transaction) => transaction.toJson()).toList());
     await _prefs.setString("transactions", encodedData);
   }
