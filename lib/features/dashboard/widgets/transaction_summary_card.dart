@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 
 class TransactionSummaryCard extends StatelessWidget {
@@ -16,8 +18,8 @@ class TransactionSummaryCard extends StatelessWidget {
       : Icons.arrow_downward_outlined;
 
     final title = isIncome
-      ? "Gelir"
-      : "Gider";
+      ? AppStrings.transactionIncome.tr()
+      : AppStrings.transactionExpense.tr();
 
     return Row(
       children: [

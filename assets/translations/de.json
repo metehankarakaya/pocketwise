@@ -1,0 +1,25 @@
+{
+  "appName": "Pocket Wise",
+  "homeGreeting": "👋 Hallo! Metehan",
+  "recentTransactions": "Letzte Transaktionen",
+  "totalBalance": "Gesamtguthaben",
+  "settingsTitle": "Einstellungen",
+  "changeLanguage": "Sprache ändern",
+
+  "food": "Essen",
+  "groceries": "Lebensmittel",
+  "transport": "Transport",
+  "bills": "Rechnungen",
+  "subscription": "Abonnement",
+  "entertainment": "Unterhaltung",
+  "health": "Gesundheit",
+  "clothing": "Kleidung",
+  "technology": "Technologie",
+  "education": "Bildung",
+
+  "addNewTransaction": "Neue Transaktion hinzufügen",
+  "transactionTitleHint": "Transaktionstitel (Optional)",
+  "saveButton": "TRANSAKTION SPEICHERN",
+  "transactionIncome": "Einnahmen",
+  "transactionExpense": "Ausgaben"
+}

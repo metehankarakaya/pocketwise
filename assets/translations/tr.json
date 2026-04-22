@@ -1,0 +1,25 @@
+{
+  "appName": "Pocket Wise",
+  "homeGreeting": "👋 Merhaba! Metehan",
+  "recentTransactions": "Son İşlemler",
+  "totalBalance": "Toplam Bakiye",
+  "settingsTitle": "Ayarlar",
+  "changeLanguage": "Dil Değiştir",
+
+  "food": "Gıda",
+  "groceries": "Market",
+  "transport": "Ulaşım",
+  "bills": "Fatura",
+  "subscription": "Abonelik",
+  "entertainment": "Eğlence",
+  "health": "Sağlık",
+  "clothing": "Giyim",
+  "technology": "Teknoloji",
+  "education": "Eğitim",
+
+  "addNewTransaction": "Yeni İşlem Ekle",
+  "transactionTitleHint": "İşlem Başlığı (İsteğe bağlı)",
+  "saveButton": "İŞLEMİ KAYDET",
+  "transactionIncome": "Gelir",
+  "transactionExpense": "Gider"
+}

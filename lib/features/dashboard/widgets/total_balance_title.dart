@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:pocketwise/core/constants/app_strings.dart';
 
 class TotalBalanceTitle extends StatelessWidget {
   const TotalBalanceTitle({super.key});
@@ -11,7 +13,7 @@ class TotalBalanceTitle extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        "Toplam Bakiye",
+        AppStrings.totalBalance.tr(),
       ),
     );
   }

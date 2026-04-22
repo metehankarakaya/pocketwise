@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/features/settings/screens/settings_screen.dart';
 import 'package:pocketwise/features/transaction/widgets/add_transaction_modal.dart';
@@ -21,7 +23,7 @@ class DashboardScreen extends ConsumerWidget {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pocket Wise"),
+        title: Text(AppStrings.appName.tr()),
         actions: [
           IconButton(
             onPressed: () {
@@ -45,7 +47,7 @@ class DashboardScreen extends ConsumerWidget {
                   width: size.width/2,
                   child: Card(
                     child: ListTile(
-                      title: Text("👋 Hi! Metehan"),
+                      title: Text(AppStrings.homeGreeting.tr()),
                     ),
                   ),
                 ),
@@ -77,7 +79,7 @@ class DashboardScreen extends ConsumerWidget {
                 ],
               ),
               const Divider(),
-              SizedBox(width: double.infinity, child: Text("Son İşlemler", style: Theme.of(context).textTheme.headlineSmall,)),
+              SizedBox(width: double.infinity, child: Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,)),
               Column(
                 children: transactions.map((transaction) {
                   return TransactionListItem(transactionModel: transaction);

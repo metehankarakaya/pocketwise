@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
+
+import '../../../core/constants/app_strings.dart';
 
 class AddTransactionModalScreen extends ConsumerStatefulWidget {
   const AddTransactionModalScreen({super.key});
@@ -28,7 +31,18 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
       _amountController.text != "₺0,00";
   }
 
-  final List<String> _categories = ["Gıda", "Market", "Ulaşım", "Fatura", "Abonelik", "Eğlence", "Sağlık", "Giyim", "Teknoloji", "Eğitim"];
+  final List<String> _categories = [
+    AppStrings.food.tr(),
+    AppStrings.groceries.tr(),
+    AppStrings.transport.tr(),
+    AppStrings.bills.tr(),
+    AppStrings.subscription.tr(),
+    AppStrings.entertainment.tr(),
+    AppStrings.health.tr(),
+    AppStrings.clothing.tr(),
+    AppStrings.technology.tr(),
+    AppStrings.education.tr(),
+  ];
 
   @override
   void initState() {
@@ -73,7 +87,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
             ),
           ),
           const SizedBox(height: 16),
-          Text("Yeni İşlem Ekle", style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          Text(AppStrings.addNewTransaction.tr(), style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: colorScheme.onSurface,
             fontWeight: FontWeight.bold
           )),
@@ -109,7 +123,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
                     });
                   },
                   isSelected: _selectedType == TransactionType.expense,
-                  title: "Gider",
+                  title: AppStrings.transactionIncome.tr(),
                   color: Colors.red.shade400,
                 ),
               ),
@@ -122,7 +136,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
                     });
                   },
                   isSelected: _selectedType == TransactionType.income,
-                  title: "Gelir",
+                  title: AppStrings.transactionExpense.tr(),
                   color: Colors.green.shade400,
                 ),
               ),
@@ -151,7 +165,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
             controller: _titleController,
             style: TextStyle(color: colorScheme.onSurface),
             decoration: InputDecoration(
-              hintText: "İşlem Başlığı (İsteğe bağlı)",
+              hintText: AppStrings.transactionTitleHint.tr(),
               hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
               filled: true,
               fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
@@ -188,8 +202,8 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
                 foregroundColor: _isFormValid ? colorScheme.onPrimary : colorScheme.onSurfaceVariant,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: const Text(
-                "İŞLEMİ KAYDET",
+              child: Text(
+                AppStrings.saveButton.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
               ),
             ),
