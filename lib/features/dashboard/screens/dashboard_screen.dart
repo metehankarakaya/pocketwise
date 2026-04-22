@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
+import 'package:pocketwise/core/widgets/empty_holder.dart';
 import 'package:pocketwise/features/dashboard/providers/dashboard_provider.dart';
 import 'package:pocketwise/features/settings/screens/settings_screen.dart';
 import 'package:pocketwise/features/transaction/widgets/add_transaction_modal.dart';
@@ -125,7 +126,8 @@ class DashboardScreen extends ConsumerWidget {
                 ),
               ),
               SizedBox(width: double.infinity, child: Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,)),
-              Column(
+              filteredTransactions.isNotEmpty
+              ? Column(
                 children: filteredTransactions.map((transaction) {
                   return Dismissible(
                     key: Key(transaction.id),
@@ -133,6 +135,10 @@ class DashboardScreen extends ConsumerWidget {
                     child: TransactionListItem(transactionModel: transaction)
                   );
                 }).toList(),
+              )
+              : EmptyHolder(
+                iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
+                title: activeFilter != null ? AppStrings.noTransactionsInPeriod.tr() : AppStrings.noTransactionsYet.tr(),
               ),
             ],
           ),
