@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 
 class TransactionListItem extends StatelessWidget {
@@ -8,32 +10,32 @@ class TransactionListItem extends StatelessWidget {
 
   static IconData _iconForCategory(String category) {
     switch (category) {
-      case "Gıda": return Icons.fastfood;
-      case "Market": return Icons.shopping_cart;
-      case "Ulaşım": return Icons.directions_car;
-      case "Fatura": return Icons.receipt_long;
-      case "Eğlence": return Icons.movie;
-      case "Sağlık": return Icons.local_hospital;
-      case "Eğitim": return Icons.school;
-      case "Giyim": return Icons.checkroom;
-      case "Teknoloji": return Icons.devices;
-      case "Abonelik": return Icons.subscriptions;
+      case AppStrings.food: return Icons.fastfood;
+      case AppStrings.groceries: return Icons.shopping_cart;
+      case AppStrings.transport: return Icons.directions_car;
+      case AppStrings.bills: return Icons.receipt_long;
+      case AppStrings.entertainment: return Icons.movie;
+      case AppStrings.health: return Icons.local_hospital;
+      case AppStrings.education: return Icons.school;
+      case AppStrings.clothing: return Icons.checkroom;
+      case AppStrings.technology: return Icons.devices;
+      case AppStrings.subscription: return Icons.subscriptions;
       default: return Icons.category;
     }
   }
 
   static Color _colorForCategory(String category) {
     switch (category) {
-      case "Gıda": return Colors.orange;
-      case "Market": return Colors.blue;
-      case "Ulaşım": return Colors.purple;
-      case "Fatura": return Colors.red;
-      case "Eğlence": return Colors.pink;
-      case "Sağlık": return Colors.teal;
-      case "Eğitim": return Colors.indigo;
-      case "Giyim": return Colors.brown;
-      case "Teknoloji": return Colors.cyan;
-      case "Abonelik": return Colors.deepPurple;
+      case AppStrings.food: return Colors.orange;
+      case AppStrings.groceries: return Colors.blue;
+      case AppStrings.transport: return Colors.purple;
+      case AppStrings.bills: return Colors.red;
+      case AppStrings.entertainment: return Colors.pink;
+      case AppStrings.health: return Colors.teal;
+      case AppStrings.education: return Colors.indigo;
+      case AppStrings.clothing: return Colors.brown;
+      case AppStrings.technology: return Colors.cyan;
+      case AppStrings.subscription: return Colors.deepPurple;
       default: return Colors.grey;
     }
   }
@@ -90,7 +92,7 @@ class TransactionListItem extends StatelessWidget {
         ),
       ),
       title: Text(
-        transactionModel.title.trim().isEmpty ? transactionModel.category : transactionModel.title,
+        transactionModel.title.trim().isEmpty ? transactionModel.category.tr() : transactionModel.title,
         style: TextStyle(
           fontWeight: FontWeight.w600,
           color: colorScheme.onSurface,

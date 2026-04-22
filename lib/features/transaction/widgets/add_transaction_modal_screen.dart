@@ -31,16 +31,16 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
   }
 
   final List<String> _categories = [
-    AppStrings.food.tr(),
-    AppStrings.groceries.tr(),
-    AppStrings.transport.tr(),
-    AppStrings.bills.tr(),
-    AppStrings.subscription.tr(),
-    AppStrings.entertainment.tr(),
-    AppStrings.health.tr(),
-    AppStrings.clothing.tr(),
-    AppStrings.technology.tr(),
-    AppStrings.education.tr(),
+    AppStrings.food,
+    AppStrings.groceries,
+    AppStrings.transport,
+    AppStrings.bills,
+    AppStrings.subscription,
+    AppStrings.entertainment,
+    AppStrings.health,
+    AppStrings.clothing,
+    AppStrings.technology,
+    AppStrings.education,
   ];
 
   @override
@@ -153,7 +153,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionModalS
                   selected: _selectedCategory == c,
                   selectedColor: colorScheme.primaryContainer,
                   onSelected: (val) => setState(() => _selectedCategory = val ? c : null),
-                  label: Text(c),
+                  label: Text(c.tr()),
                   labelStyle: TextStyle(
                     color: _selectedCategory == c ? colorScheme.onPrimaryContainer : colorScheme.onSurface
                   ),
