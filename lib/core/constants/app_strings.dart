@@ -43,4 +43,7 @@ class AppStrings {
   static const String month = "month";
   static const String year = "year";
 
+  static const String noTransactionsInPeriod = "noTransactionsInPeriod";
+  static const String noTransactionsYet = "noTransactionsYet";
+
 }

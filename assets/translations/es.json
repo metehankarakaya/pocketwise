@@ -42,6 +42,9 @@
   "today": "Hoy",
   "week": "Esta semana",
   "month": "Este mes",
-  "year": "Este año"
+  "year": "Este año",
+
+  "noTransactionsInPeriod": "Sin transacciones en este período",
+  "noTransactionsYet": "Aún no hay transacciones"
 
 }

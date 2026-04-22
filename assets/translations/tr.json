@@ -42,6 +42,9 @@
   "today": "Bugün",
   "week": "Bu Hafta",
   "month": "Bu Ay",
-  "year": "Bu Yıl"
+  "year": "Bu Yıl",
+
+  "noTransactionsInPeriod": "Bu dönemde işlem yok",
+  "noTransactionsYet": "Henüz işlem yok"
 
 }
