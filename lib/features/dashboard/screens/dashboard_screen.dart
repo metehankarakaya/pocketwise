@@ -133,6 +133,7 @@ class DashboardScreen extends ConsumerWidget {
                 children: filteredTransactions.map((transaction) {
                   return Dismissible(
                     key: Key(transaction.id),
+                    direction: DismissDirection.endToStart,
                     onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(transaction.id),
                     child: Card(child: TransactionListItem(transactionModel: transaction))
                   );
