@@ -7,6 +7,9 @@ class AppStrings {
   static const String changeUsername = "changeUsername";
   static const String enterUsername = "enterUsername";
   static const String changeLanguage = "changeLanguage";
+  static const String viewRecurringTransactions = "viewRecurringTransactions";
+  static const String recurringTransactions = "recurringTransactions";
+  static const String noRecurringTransactions = "noRecurringTransactions";
   static const String clearAllRecurringTransactions = "clearAllRecurringTransactions";
   static const String clearAllTransactions = "clearAllTransactions";
   static const String wasCleared = "wasCleared";
