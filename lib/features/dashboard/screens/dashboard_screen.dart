@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
+import 'package:pocketwise/core/providers/user_provider.dart';
 import 'package:pocketwise/core/widgets/empty_holder.dart';
 import 'package:pocketwise/features/dashboard/providers/dashboard_provider.dart';
 import 'package:pocketwise/features/settings/screens/settings_screen.dart';
@@ -22,6 +23,7 @@ class DashboardScreen extends ConsumerWidget {
     final notifier = ref.watch(transactionProvider.notifier);
     final transactions = ref.watch(transactionProvider);
     final activeFilter = ref.watch(dashboardFilterProvider);
+    final username = ref.watch(userProvider);
 
     List<DateFilter> dateFilters = [
       DateFilter.today,
@@ -73,7 +75,7 @@ class DashboardScreen extends ConsumerWidget {
                 alignment: Alignment.centerLeft,
                 child: Card(
                   child: ListTile(
-                    title: Text(AppStrings.homeGreeting.tr()),
+                    title: Text("${AppStrings.homeGreeting.tr()} $username"),
                   ),
                 ),
               ),
