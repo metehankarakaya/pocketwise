@@ -27,7 +27,7 @@ class RecurringTransactionScreen extends ConsumerWidget {
           }).toList(),
         ),
       ) : EmptyHolder(
-        title: AppStrings.noRecurringTransactions,
+        title: AppStrings.noRecurringTransactions.tr(),
         iconData: Icons.receipt_long,
       ),
     );

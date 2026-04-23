@@ -142,7 +142,7 @@ class DashboardScreen extends ConsumerWidget {
               : Card(
                 child: EmptyHolder(
                   iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
-                  title: activeFilter != null ? AppStrings.noTransactionsInPeriod.tr() : AppStrings.noTransactionsYet.tr(),
+                  title: activeFilter != null ? "${AppStrings.noTransactionsInPeriod.tr()} (${activeFilter.name.tr()})" : AppStrings.noTransactionsYet.tr(),
                 ),
               ),
             ],
