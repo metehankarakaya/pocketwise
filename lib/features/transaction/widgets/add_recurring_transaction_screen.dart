@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/recurring_transaction_model.dart';
+import 'package:pocketwise/core/utils/currency_input_formatter.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 
@@ -117,7 +118,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
               ),
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
-                _IntlAmountFormatter(_formatter),
+                CurrencyInputFormatter(_formatter),
               ],
             ),
             Row(
@@ -367,29 +368,6 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
           ],
         ),
       ),
-    );
-  }
-}
-
-class _IntlAmountFormatter extends TextInputFormatter {
-  final NumberFormat formatter;
-
-  _IntlAmountFormatter(this.formatter);
-
-  @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
-      TextEditingValue newValue) {
-    if (newValue.text.isEmpty) return newValue;
-
-    String cleanText = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
-    if (cleanText.length > 9) return oldValue;
-
-    double value = double.parse(cleanText) / 100;
-    String formatted = formatter.format(value);
-
-    return newValue.copyWith(
-      text: formatted,
-      selection: TextSelection.collapsed(offset: formatted.length),
     );
   }
 }
