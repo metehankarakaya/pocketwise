@@ -44,17 +44,17 @@ class RecurringTransactionListItem extends ConsumerWidget {
 
   static final formatter = NumberFormat.currency(locale: 'tr_TR', symbol: '₺');
 
-  static String _formatDateRange(DateTime startDate, DateTime? endDate) {
-    final dateFormat = DateFormat("dd MMM yyyy", "tr_TR");
-    final start = dateFormat.format(startDate);
-    if (endDate == null) {
-      return "$start - ∞";
-    }
-    return "$start - ${dateFormat.format(endDate)}";
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String formatDateRange(DateTime startDate, DateTime? endDate) {
+      final dateFormat = DateFormat('dd MMMM yyyy', context.locale.toString());
+      final start = dateFormat.format(startDate);
+      if (endDate == null) {
+        return "$start - ∞";
+      }
+      return "$start - ${dateFormat.format(endDate)}";
+    }
+
     final colorScheme = Theme.of(context).colorScheme;
     final formattedAmount = formatter.format(recurringTransaction.amount);
 
@@ -88,12 +88,13 @@ class RecurringTransactionListItem extends ConsumerWidget {
           ),
         ),
         subtitle: Text(
-          _formatDateRange(recurringTransaction.startDate, recurringTransaction.endDate),
+          formatDateRange(recurringTransaction.startDate, recurringTransaction.endDate),
           style: TextStyle(
             color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
           ),
         ),
         trailing: Column(
+          crossAxisAlignment: .end,
           children: [
             Text(
               "${isExpense ? "-" : "+"}$formattedAmount",

@@ -212,7 +212,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                         Text(
                           _startDate == null
                             ? AppStrings.pickStartDate.tr()
-                            : DateFormat('dd MMMM yyyy', 'tr_TR').format(_startDate!),
+                            : DateFormat('dd MMMM yyyy', context.locale.toString()).format(_startDate!),
                           style: theme.textTheme.bodyLarge?.copyWith(
                             color: _startDate == null ? colorScheme.onSurfaceVariant : colorScheme.onSurface,
                             fontWeight: FontWeight.w600,
@@ -292,7 +292,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                         Text(
                           _endDate == null
                             ? AppStrings.pickEndDate.tr()
-                            : DateFormat('dd MMMM yyyy', 'tr_TR').format(_endDate!),
+                            : DateFormat('dd MMMM yyyy', context.locale.toString()).format(_endDate!),
                           style: theme.textTheme.bodyLarge?.copyWith(
                             color: _endDate == null ? colorScheme.onSurfaceVariant : colorScheme.onSurface,
                             fontWeight: FontWeight.w600,
