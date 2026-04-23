@@ -8,12 +8,13 @@ class EmptyHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 120),
+      padding: EdgeInsets.symmetric(vertical: 150),
       child: Center(
         child: Column(
           mainAxisAlignment: .center,
+          mainAxisSize: .max,
           children: [
-            Icon(iconData, size: 64,),
+            Icon(iconData, size: 72,),
             SizedBox(height: 10,),
             Text(title),
           ],

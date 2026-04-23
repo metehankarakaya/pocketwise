@@ -132,13 +132,15 @@ class DashboardScreen extends ConsumerWidget {
                   return Dismissible(
                     key: Key(transaction.id),
                     onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(transaction.id),
-                    child: TransactionListItem(transactionModel: transaction)
+                    child: Card(child: TransactionListItem(transactionModel: transaction))
                   );
                 }).toList(),
               )
-              : EmptyHolder(
-                iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
-                title: activeFilter != null ? AppStrings.noTransactionsInPeriod.tr() : AppStrings.noTransactionsYet.tr(),
+              : Card(
+                child: EmptyHolder(
+                  iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
+                  title: activeFilter != null ? AppStrings.noTransactionsInPeriod.tr() : AppStrings.noTransactionsYet.tr(),
+                ),
               ),
             ],
           ),
