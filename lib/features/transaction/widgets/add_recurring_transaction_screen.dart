@@ -184,7 +184,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                     final DateTime? picked = await showDatePicker(
                       context: context,
                       initialDate: _startDate,
-                      firstDate: DateTime(2000),
+                      firstDate: DateTime.now(),
                       lastDate: DateTime(2100),
                     );
                     if (picked != null && picked != _startDate) {
