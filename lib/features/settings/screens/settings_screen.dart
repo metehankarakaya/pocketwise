@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocketwise/features/settings/screens/recurring_transaction_screen.dart';
 import 'package:pocketwise/features/settings/widgets/change_username_dialog.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
@@ -40,6 +41,15 @@ class SettingsScreen extends ConsumerWidget {
             SettingsItem(
               onTap: () => ChangeLanguageModal.show(context),
               title: AppStrings.changeLanguage.tr(),
+            ),
+            SettingsItem(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecurringTransactionScreen())
+                );
+              },
+              title: AppStrings.viewRecurringTransactions.tr(),
             ),
             SettingsItem(
               onTap: () {
