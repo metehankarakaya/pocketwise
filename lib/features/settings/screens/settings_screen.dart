@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocketwise/features/settings/widgets/change_username_dialog.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
 
 import '../../../core/constants/app_strings.dart';
@@ -31,6 +32,10 @@ class SettingsScreen extends ConsumerWidget {
         child: Column(
           children: [
             const SizedBox(height: 50,),
+            SettingsItem(
+              onTap: () => ChangeUsernameDialog.show(context, ref),
+              title: AppStrings.changeUsername.tr(),
+            ),
             SettingsItem(
               onTap: () => ChangeLanguageModal.show(context),
               title: AppStrings.changeLanguage.tr(),
