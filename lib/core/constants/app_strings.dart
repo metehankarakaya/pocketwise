@@ -4,6 +4,8 @@ class AppStrings {
   static const String recentTransactions = "recentTransactions";
   static const String totalBalance = "totalBalance";
   static const String settingsTitle = "settingsTitle";
+  static const String changeUsername = "changeUsername";
+  static const String enterUsername = "enterUsername";
   static const String changeLanguage = "changeLanguage";
   static const String clearAllTransactions = "clearAllTransactions";
   static const String wasCleared = "wasCleared";
@@ -45,5 +47,8 @@ class AppStrings {
 
   static const String noTransactionsInPeriod = "noTransactionsInPeriod";
   static const String noTransactionsYet = "noTransactionsYet";
+
+  static const String cancel = "cancel";
+  static const String save = "save";
 
 }

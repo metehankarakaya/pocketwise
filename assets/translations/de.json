@@ -1,9 +1,11 @@
 {
   "appName": "Pocket Wise",
-  "homeGreeting": "👋 Hallo! Metehan",
+  "homeGreeting": "👋 Hallo!",
   "recentTransactions": "Letzte Transaktionen",
   "totalBalance": "Gesamtguthaben",
   "settingsTitle": "Einstellungen",
+  "changeUsername": "Benutzernamen ändern",
+  "enterUsername": "Benutzernamen eingeben",
   "changeLanguage": "Sprache ändern",
   "clearAllTransactions": "Alle Transaktionen löschen",
   "wasCleared": "Alle Transaktionen wurden gelöscht",
@@ -45,6 +47,9 @@
   "year": "Dieses Jahr",
 
   "noTransactionsInPeriod": "Keine Transaktionen in diesem Zeitraum",
-  "noTransactionsYet": "Noch keine Transaktionen"
+  "noTransactionsYet": "Noch keine Transaktionen",
+
+  "cancel": "Abbrechen",
+  "save": "Speichern"
 
 }

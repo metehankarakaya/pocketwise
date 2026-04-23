@@ -1,9 +1,11 @@
 {
   "appName": "Pocket Wise",
-  "homeGreeting": "👋 Hi! Metehan",
+  "homeGreeting": "👋 Hi!",
   "recentTransactions": "Recent Transactions",
   "totalBalance": "Total Balance",
   "settingsTitle": "Settings",
+  "changeUsername": "Change Username",
+  "enterUsername": "Enter username",
   "changeLanguage": "Change Language",
   "clearAllTransactions": "Clear All Transactions",
   "wasCleared": "All transactions were cleared",
@@ -45,6 +47,9 @@
   "year": "This Year",
 
   "noTransactionsInPeriod": "No transactions in this period",
-  "noTransactionsYet": "No transactions yet"
+  "noTransactionsYet": "No transactions yet",
+
+  "cancel": "Cancel",
+  "save": "Save"
 
 }

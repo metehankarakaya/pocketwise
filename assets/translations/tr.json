@@ -1,9 +1,11 @@
 {
   "appName": "Pocket Wise",
-  "homeGreeting": "👋 Merhaba! Metehan",
+  "homeGreeting": "👋 Merhaba!",
   "recentTransactions": "Son İşlemler",
   "totalBalance": "Toplam Bakiye",
   "settingsTitle": "Ayarlar",
+  "changeUsername": "Kullanıcı Adını Değiştir",
+  "enterUsername": "Kullanıcı adını girin",
   "changeLanguage": "Dil Değiştir",
   "clearAllTransactions": "Tüm İşlemleri Sil",
   "wasCleared": "Tüm işlemler silindi",
@@ -45,6 +47,9 @@
   "year": "Bu Yıl",
 
   "noTransactionsInPeriod": "Bu dönemde işlem yok",
-  "noTransactionsYet": "Henüz işlem yok"
+  "noTransactionsYet": "Henüz işlem yok",
+
+  "cancel": "İptal",
+  "save": "Kaydet"
 
 }
