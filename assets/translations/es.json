@@ -8,7 +8,9 @@
   "enterUsername": "Ingrese nombre de usuario",
   "changeLanguage": "Cambiar idioma",
   "clearAllTransactions": "Eliminar todas las transacciones",
+  "clearAllRecurringTransactions": "Borrar todas las transacciones recurrentes",
   "wasCleared": "Se eliminaron todas las transacciones",
+  "recurringTransactionsCleared": "Todas las transacciones recurrentes fueron eliminadas",
 
   "food": "Comida",
   "groceries": "Supermercado",

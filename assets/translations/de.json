@@ -8,7 +8,9 @@
   "enterUsername": "Benutzernamen eingeben",
   "changeLanguage": "Sprache ändern",
   "clearAllTransactions": "Alle Transaktionen löschen",
+  "clearAllRecurringTransactions": "Alle wiederkehrenden Transaktionen löschen",
   "wasCleared": "Alle Transaktionen wurden gelöscht",
+  "recurringTransactionsCleared": "Alle wiederkehrenden Transaktionen wurden gelöscht",
 
   "food": "Essen",
   "groceries": "Lebensmittel",

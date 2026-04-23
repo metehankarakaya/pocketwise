@@ -7,8 +7,10 @@
   "changeUsername": "Kullanıcı Adını Değiştir",
   "enterUsername": "Kullanıcı adını girin",
   "changeLanguage": "Dil Değiştir",
-  "clearAllTransactions": "Tüm İşlemleri Sil",
+  "clearAllTransactions": "Tüm İşlemleri Temizle",
+  "clearAllRecurringTransactions": "Tüm Tekrarlayan İşlemleri Temizle",
   "wasCleared": "Tüm işlemler silindi",
+  "recurringTransactionsCleared": "Tüm tekrarlayan işlemler silindi",
 
   "food": "Gıda",
   "groceries": "Market",

@@ -108,6 +108,12 @@ class RecurringTransactionProvider extends Notifier<List<RecurringTransactionMod
     await _prefs.setString("recurring_transactions", encodedData);
   }
 
+  void clearAllRecurringTransactions() async {
+    state = [];
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove("recurring_transactions");
+  }
+
   void toggleIsActive(String id) async {
     state = state.map((element) {
       if (element.id == id) {

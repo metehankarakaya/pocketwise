@@ -8,7 +8,9 @@
   "enterUsername": "Enter username",
   "changeLanguage": "Change Language",
   "clearAllTransactions": "Clear All Transactions",
+  "clearAllRecurringTransactions": "Clear All Recurring Transactions",
   "wasCleared": "All transactions were cleared",
+  "recurringTransactionsCleared": "All recurring transactions were cleared",
 
   "food": "Food",
   "groceries": "Groceries",

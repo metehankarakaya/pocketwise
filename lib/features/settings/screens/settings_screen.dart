@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/features/settings/widgets/change_username_dialog.dart';
+import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
 
 import '../../../core/constants/app_strings.dart';
@@ -54,6 +55,21 @@ class SettingsScreen extends ConsumerWidget {
                 );
               },
               title: AppStrings.clearAllTransactions.tr(),
+            ),
+            SettingsItem(
+              onTap: () {
+                ref.read(recurringTransactionProvider.notifier).clearAllRecurringTransactions();
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(AppStrings.recurringTransactionsCleared.tr()),
+                    backgroundColor: Colors.green.shade400,
+                    behavior: SnackBarBehavior.floating,
+                    duration: Duration(seconds: 2),
+                  )
+                );
+              },
+              title: AppStrings.clearAllRecurringTransactions.tr(),
             ),
           ],
         ),
