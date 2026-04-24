@@ -9,8 +9,8 @@ import '../../../core/utils/category_utils.dart';
 
 class RecurringTransactionListItem extends ConsumerWidget {
   final RecurringTransactionModel recurringTransaction;
-  final VoidCallback onLongPress;
-  const RecurringTransactionListItem({super.key, required this.recurringTransaction, required this.onLongPress});
+  final VoidCallback? onLongPress;
+  const RecurringTransactionListItem({super.key, required this.recurringTransaction, this.onLongPress});
 
   static final formatter = NumberFormat.currency(locale: 'tr_TR', symbol: '₺');
 
