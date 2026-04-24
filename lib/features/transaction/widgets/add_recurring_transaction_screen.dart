@@ -11,6 +11,7 @@ import 'package:pocketwise/features/transaction/widgets/transaction_type_button.
 
 import '../../../core/constants/app_strings.dart';
 import '../../../core/models/transaction_model.dart';
+import 'category_selector.dart';
 
 class AddRecurringTransactionScreen extends ConsumerStatefulWidget {
   final RecurringTransactionModel? recurringTransactionModel;
@@ -153,22 +154,9 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
               ],
             ),
             const SizedBox(height: 20,),
-            Wrap(
-              spacing: 8.0,
-              runSpacing: 8.0,
-              alignment: WrapAlignment.center,
-              children: categories.map((c) {
-                return ChoiceChip(
-                  showCheckmark: false,
-                  selected: _selectedCategory == c,
-                  selectedColor: colorScheme.primaryContainer,
-                  onSelected: (val) => setState(() => _selectedCategory = val ? c : null),
-                  label: Text(c.tr()),
-                  labelStyle: TextStyle(
-                    color: _selectedCategory == c ? colorScheme.onPrimaryContainer : colorScheme.onSurface
-                  ),
-                );
-              }).toList(),
+            CategorySelector(
+              selectedCategory: _selectedCategory,
+              onCategorySelected: (category) => setState(() => _selectedCategory = category)
             ),
             const SizedBox(height: 20),
             DatePickerField(

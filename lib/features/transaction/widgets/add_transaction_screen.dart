@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/core/utils/currency_input_formatter.dart';
 import 'package:pocketwise/core/widgets/gradient_button.dart';
+import 'package:pocketwise/features/transaction/widgets/category_selector.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
 
@@ -57,7 +58,6 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
 
   @override
   Widget build(BuildContext context) {
-
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -134,22 +134,9 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
               ],
             ),
             const SizedBox(height: 20,),
-            Wrap(
-              spacing: 8.0,
-              runSpacing: 8.0,
-              alignment: WrapAlignment.center,
-              children: categories.map((c) {
-                return ChoiceChip(
-                  showCheckmark: false,
-                  selected: _selectedCategory == c,
-                  selectedColor: colorScheme.primaryContainer,
-                  onSelected: (val) => setState(() => _selectedCategory = val ? c : null),
-                  label: Text(c.tr()),
-                  labelStyle: TextStyle(
-                    color: _selectedCategory == c ? colorScheme.onPrimaryContainer : colorScheme.onSurface
-                  ),
-                );
-              }).toList(),
+            CategorySelector(
+              selectedCategory: _selectedCategory,
+              onCategorySelected: (category) => setState(() => _selectedCategory = category)
             ),
             const SizedBox(height: 20),
             TextField(
@@ -182,7 +169,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
                 Navigator.pop(context);
               } :
               _isFormValid
-                  ? () {
+                ? () {
                 final amount = _formatter.parse(_amountController.text.trim()).toDouble();
                 ref.read(transactionProvider.notifier).addTransaction(
                   _titleController.text, amount, _selectedCategory!, DateTime.now(), _selectedType!
