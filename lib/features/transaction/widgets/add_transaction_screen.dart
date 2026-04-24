@@ -10,7 +10,8 @@ import 'package:pocketwise/features/transaction/providers/transaction_provider.d
 import '../../../core/constants/app_strings.dart';
 
 class AddTransactionScreen extends ConsumerStatefulWidget {
-  const AddTransactionScreen({super.key});
+  final TransactionModel? transactionModel;
+  const AddTransactionScreen({super.key, this.transactionModel});
 
   @override
   ConsumerState createState() => _AddTransactionModalScreenState();
@@ -50,6 +51,12 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
     super.initState();
     _titleController = TextEditingController();
     _amountController = TextEditingController();
+    if (widget.transactionModel != null) {
+      _titleController.text = widget.transactionModel!.title;
+      _amountController.text = _formatter.format(widget.transactionModel!.amount);
+      _selectedCategory = widget.transactionModel!.category;
+      _selectedType = widget.transactionModel!.type;
+    }
   }
 
   @override
@@ -80,7 +87,11 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
           mainAxisSize: .min,
           children: [
             const SizedBox(height: 16),
-            Text(AppStrings.addNewTransaction.tr(), style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            Text(
+              widget.transactionModel != null
+              ? AppStrings.updateTransaction.tr()
+              : AppStrings.addNewTransaction.tr(),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: colorScheme.onSurface,
               fontWeight: FontWeight.bold
             )),
@@ -180,11 +191,23 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
                   color: _isFormValid ? null : colorScheme.surfaceContainerHighest
               ),
               child: ElevatedButton(
-                onPressed: _isFormValid
+                onPressed: widget.transactionModel != null && _isFormValid
+                  ? () {
+                  final amount = _formatter.parse(_amountController.text.trim()).toDouble();
+                  ref.read(transactionProvider.notifier).updateTransaction(
+                    widget.transactionModel!.id,
+                    _titleController.text,
+                    amount,
+                    _selectedCategory!,
+                    _selectedType!
+                    );
+                  Navigator.pop(context);
+                  } :
+                _isFormValid
                   ? () {
                   final amount = _formatter.parse(_amountController.text.trim()).toDouble();
                   ref.read(transactionProvider.notifier).addTransaction(
-                      _titleController.text, amount, _selectedCategory!, DateTime.now(), _selectedType!
+                    _titleController.text, amount, _selectedCategory!, DateTime.now(), _selectedType!
                   );
                   Navigator.pop(context);
                 } : null,

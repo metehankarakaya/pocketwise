@@ -1,18 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
+import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/features/transaction/widgets/add_recurring_transaction_screen.dart';
 import 'package:pocketwise/features/transaction/widgets/add_transaction_screen.dart';
 
 class AddTransactionModalScreen extends StatelessWidget {
-  const AddTransactionModalScreen({super.key});
+  final TransactionModel? transactionModel;
+  const AddTransactionModalScreen({super.key, this.transactionModel});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return DefaultTabController(
+    return transactionModel != null
+      ? AddTransactionScreen(transactionModel: transactionModel,)
+      : DefaultTabController(
       length: 2,
       child: Container(
         height: MediaQuery.of(context).size.height * 0.8,
@@ -66,11 +70,11 @@ class AddTransactionModalScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  AddTransactionScreen(),
+                  AddTransactionScreen(transactionModel: transactionModel,),
                   AddRecurringTransactionScreen(),
                 ],
               ),
