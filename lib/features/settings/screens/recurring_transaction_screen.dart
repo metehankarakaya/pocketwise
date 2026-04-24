@@ -19,30 +19,43 @@ class RecurringTransactionScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(AppStrings.recurringTransactions.tr()),
       ),
-      body: recurringTransactions.isNotEmpty
-      ? Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: recurringTransactions.map((element) {
-              return Card(
-                clipBehavior: Clip.antiAlias,
-                child: Dismissible(
-                  key: Key(element.id),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (_) => ref.read(recurringTransactionProvider.notifier).removeRecurring(element.id),
-                  child: RecurringTransactionListItem(
-                  onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
-                  recurringTransaction: element,
+      body: CustomScrollView(
+        slivers: [
+          if (recurringTransactions.isNotEmpty)
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                childCount: recurringTransactions.length,
+                  (context, index) {
+                    final element = recurringTransactions[index];
+                    return Card(
+                      clipBehavior: Clip.antiAlias,
+                      child: Dismissible(
+                        key: Key(element.id),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (_) => ref.read(recurringTransactionProvider.notifier).removeRecurring(element.id),
+                        child: RecurringTransactionListItem(
+                          onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
+                          recurringTransaction: element,
+                        ),
+                      ),
+                    );
+                  }
+              ),
+            )
+          else
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: EmptyHolder(
+                    title: AppStrings.noRecurringTransactions.tr(),
+                    iconData: Icons.receipt_long,
                   ),
-                )
-              );
-            }).toList(),
-          ),
-        ),
-      ) : EmptyHolder(
-        title: AppStrings.noRecurringTransactions.tr(),
-        iconData: Icons.receipt_long,
+                ),
+              ),
+            )
+        ],
       ),
     );
   }
