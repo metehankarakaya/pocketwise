@@ -68,18 +68,17 @@ class DashboardScreen extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Card(
-                  child: ListTile(
-                    title: Text("${AppStrings.homeGreeting.tr()} $username"),
-                  ),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Card(
+                child: ListTile(
+                  title: Text("${AppStrings.homeGreeting.tr()} $username"),
                 ),
               ),
-              Column(
+            ),
+            SliverToBoxAdapter(
+              child: Column(
                 crossAxisAlignment: .start,
                 children: [
                   Padding(
@@ -105,7 +104,9 @@ class DashboardScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-              SingleChildScrollView(
+            ),
+            SliverToBoxAdapter(
+              child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: dateFilters.map((dateFilter) {
@@ -113,13 +114,13 @@ class DashboardScreen extends ConsumerWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ChoiceChip(
                         showCheckmark: false,
-                          onSelected: (val) {
-                            if (activeFilter == dateFilter) {
-                              ref.read(dashboardFilterProvider.notifier).clearFilter();
-                            } else {
-                              ref.read(dashboardFilterProvider.notifier).setFilter(dateFilter);
-                            }
-                          },
+                        onSelected: (val) {
+                          if (activeFilter == dateFilter) {
+                            ref.read(dashboardFilterProvider.notifier).clearFilter();
+                          } else {
+                            ref.read(dashboardFilterProvider.notifier).setFilter(dateFilter);
+                          }
+                        },
                         label: Text(dateFilter.name.tr()),
                         selected: activeFilter == dateFilter,
                       ),
@@ -127,32 +128,45 @@ class DashboardScreen extends ConsumerWidget {
                   }).toList(),
                 ),
               ),
-              SizedBox(width: double.infinity, child: Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,)),
-              filteredTransactions.isNotEmpty
-              ? Column(
-                children: filteredTransactions.map((transaction) {
-                  return Dismissible(
-                    key: Key(transaction.id),
-                    direction: DismissDirection.endToStart,
-                    onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(transaction.id),
-                    child: Card(
-                      clipBehavior: Clip.antiAlias,
-                      child: TransactionListItem(
-                      onLongPress: () => AddTransactionModal.show(context, transactionModel: transaction),
-                      transactionModel: transaction
-                      )
-                    )
-                  );
-                }).toList(),
-              )
-              : Card(
-                child: EmptyHolder(
-                  iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
-                  title: activeFilter != null ? "${AppStrings.noTransactionsInPeriod.tr()} (${activeFilter.name.tr()})" : AppStrings.noTransactionsYet.tr(),
-                ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                width: double.infinity,
+                child: Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,)
               ),
-            ],
-          ),
+            ),
+            if (filteredTransactions.isNotEmpty)
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final transaction = filteredTransactions[index];
+                    return Dismissible(
+                      key: Key(transaction.id),
+                      direction: DismissDirection.endToStart,
+                      onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(transaction.id),
+                      child: Card(
+                        clipBehavior: Clip.antiAlias,
+                        child: TransactionListItem(
+                          onLongPress: () => AddTransactionModal.show(context, transactionModel: transaction),
+                          transactionModel: transaction,
+                        ),
+                      ),
+                    );
+                  },
+                  childCount: filteredTransactions.length
+                ),
+              )
+            else
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Card(
+                  child: EmptyHolder(
+                    iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
+                    title: activeFilter != null ? "${AppStrings.noTransactionsInPeriod.tr()} (${activeFilter.name.tr()})" : AppStrings.noTransactionsYet.tr(),
+                  ),
+                ),
+              )
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
