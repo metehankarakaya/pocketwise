@@ -63,6 +63,18 @@ class TransactionProvider extends Notifier<List<TransactionModel>>{
     return totalIncome - totalExpense;
   }
 
+  void updateTransaction(String id, String title, double amount, String category, TransactionType type) async {
+    state = state.map((transaction) {
+      if (transaction.id == id) {
+        return transaction.copyWith(title: title, amount: amount, category: category, type: type);
+      }
+      return transaction;
+    }).toList();
+    state.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    final String encodedData = jsonEncode(state.map((transaction) => transaction.toJson()).toList());
+    await _prefs.setString("transactions", encodedData);
+  }
+
 }
 
 final transactionProvider = NotifierProvider<TransactionProvider, List<TransactionModel>>(() => TransactionProvider());
