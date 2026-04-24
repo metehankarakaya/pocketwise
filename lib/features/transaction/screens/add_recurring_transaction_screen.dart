@@ -6,12 +6,12 @@ import 'package:pocketwise/core/models/recurring_transaction_model.dart';
 import 'package:pocketwise/core/utils/currency_input_formatter.dart';
 import 'package:pocketwise/core/widgets/gradient_button.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
-import 'package:pocketwise/features/transaction/widgets/date_picker_field.dart';
+import 'package:pocketwise/core/widgets/date_picker_field.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 
 import '../../../core/constants/app_strings.dart';
 import '../../../core/models/transaction_model.dart';
-import 'category_selector.dart';
+import '../../../core/widgets/category_selector.dart';
 
 class AddRecurringTransactionScreen extends ConsumerStatefulWidget {
   final RecurringTransactionModel? recurringTransactionModel;

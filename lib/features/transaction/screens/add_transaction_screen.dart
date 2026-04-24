@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/core/utils/currency_input_formatter.dart';
 import 'package:pocketwise/core/widgets/gradient_button.dart';
-import 'package:pocketwise/features/transaction/widgets/category_selector.dart';
+import 'package:pocketwise/core/widgets/category_selector.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
 

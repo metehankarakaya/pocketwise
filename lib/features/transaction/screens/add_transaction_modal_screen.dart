@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/recurring_transaction_model.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
-import 'package:pocketwise/features/transaction/widgets/add_recurring_transaction_screen.dart';
-import 'package:pocketwise/features/transaction/widgets/add_transaction_screen.dart';
+import 'package:pocketwise/features/transaction/screens/add_recurring_transaction_screen.dart';
+import 'package:pocketwise/features/transaction/screens/add_transaction_screen.dart';
 
 class AddTransactionModalScreen extends StatelessWidget {
   final TransactionModel? transactionModel;

@@ -6,7 +6,7 @@ import 'package:pocketwise/features/transaction/providers/recurring_transaction_
 import 'package:pocketwise/features/transaction/widgets/recurring_transaction_list_item.dart';
 
 import '../../../core/widgets/empty_holder.dart';
-import '../../transaction/widgets/add_transaction_modal.dart';
+import '../../transaction/screens/add_transaction_modal.dart';
 
 class RecurringTransactionScreen extends ConsumerWidget {
   const RecurringTransactionScreen({super.key});
