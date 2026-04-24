@@ -5,7 +5,8 @@ import 'package:pocketwise/core/models/transaction_model.dart';
 
 class TransactionListItem extends StatelessWidget {
   final TransactionModel transactionModel;
-  const TransactionListItem({super.key, required this.transactionModel});
+  final VoidCallback? onLongPress;
+  const TransactionListItem({super.key, required this.transactionModel, this.onLongPress});
 
   static IconData _iconForCategory(String category) {
     switch (category) {
@@ -70,6 +71,7 @@ class TransactionListItem extends StatelessWidget {
       : const Color(0xFF10B981);
 
     return ListTile(
+      onLongPress: onLongPress,
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(

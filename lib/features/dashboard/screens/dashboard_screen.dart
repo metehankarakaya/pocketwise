@@ -135,7 +135,13 @@ class DashboardScreen extends ConsumerWidget {
                     key: Key(transaction.id),
                     direction: DismissDirection.endToStart,
                     onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(transaction.id),
-                    child: Card(child: TransactionListItem(transactionModel: transaction))
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      child: TransactionListItem(
+                      onLongPress: () => AddTransactionModal.show(context, transactionModel: transaction),
+                      transactionModel: transaction
+                      )
+                    )
                   );
                 }).toList(),
               )
