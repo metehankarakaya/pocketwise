@@ -22,16 +22,23 @@ class RecurringTransactionScreen extends ConsumerWidget {
       body: recurringTransactions.isNotEmpty
       ? Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-        child: Column(
-          children: recurringTransactions.map((element) {
-            return Card(
-              clipBehavior: Clip.antiAlias,
-              child: RecurringTransactionListItem(
-              onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
-              recurringTransaction: element,
-              )
-            );
-          }).toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: recurringTransactions.map((element) {
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: Dismissible(
+                  key: Key(element.id),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (_) => ref.read(recurringTransactionProvider.notifier).removeRecurring(element.id),
+                  child: RecurringTransactionListItem(
+                  onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
+                  recurringTransaction: element,
+                  ),
+                )
+              );
+            }).toList(),
+          ),
         ),
       ) : EmptyHolder(
         title: AppStrings.noRecurringTransactions.tr(),
