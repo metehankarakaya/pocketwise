@@ -11,7 +11,8 @@ import '../../../core/constants/app_strings.dart';
 import '../../../core/models/transaction_model.dart';
 
 class AddRecurringTransactionScreen extends ConsumerStatefulWidget {
-  const AddRecurringTransactionScreen({super.key});
+  final RecurringTransactionModel? recurringTransactionModel;
+  const AddRecurringTransactionScreen({super.key, this.recurringTransactionModel});
 
   @override
   ConsumerState createState() => _AddRecurringTransactionScreenState();
@@ -66,6 +67,15 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
     super.initState();
     _titleController = TextEditingController();
     _amountController = TextEditingController();
+    if (widget.recurringTransactionModel != null) {
+      _titleController.text = widget.recurringTransactionModel!.title;
+      _amountController.text = _formatter.format(widget.recurringTransactionModel!.amount);
+      _selectedCategory = widget.recurringTransactionModel!.category;
+      _startDate = widget.recurringTransactionModel!.startDate;
+      _endDate = widget.recurringTransactionModel!.endDate;
+      _selectedFrequency = widget.recurringTransactionModel!.frequency;
+      _selectedType = widget.recurringTransactionModel!.type;
+    }
   }
 
   @override
@@ -95,7 +105,11 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
           mainAxisSize: .min,
           children: [
             const SizedBox(height: 16),
-            Text(AppStrings.addNewTransaction.tr(), style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            Text(
+              widget.recurringTransactionModel != null
+              ? AppStrings.updateRecurringTransaction.tr()
+              : AppStrings.addNewTransaction.tr(),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: colorScheme.onSurface,
               fontWeight: FontWeight.bold
             )),
@@ -338,7 +352,22 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                 color: _isFormValid ? null : colorScheme.surfaceContainerHighest
               ),
               child: ElevatedButton(
-                onPressed: _isFormValid
+                onPressed: widget.recurringTransactionModel != null && _isFormValid
+                  ? () {
+                  final amount = _formatter.parse(_amountController.text.trim()).toDouble();
+                  ref.read(recurringTransactionProvider.notifier).updateRecurring(
+                    widget.recurringTransactionModel!.id,
+                    _titleController.text,
+                    amount,
+                    _selectedCategory!,
+                    _startDate!,
+                    _selectedFrequency!,
+                    _selectedType!,
+                    endDate: _endDate
+                  );
+                  Navigator.pop(context);
+                } :
+                _isFormValid
                   ? () {
                   final amount = _formatter.parse(_amountController.text.trim()).toDouble();
                   ref.read(recurringTransactionProvider.notifier).addRecurring(
