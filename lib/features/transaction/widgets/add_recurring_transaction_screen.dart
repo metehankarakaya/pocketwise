@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/recurring_transaction_model.dart';
 import 'package:pocketwise/core/utils/currency_input_formatter.dart';
+import 'package:pocketwise/core/widgets/gradient_button.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
 import 'package:pocketwise/features/transaction/widgets/date_picker_field.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
@@ -220,58 +221,38 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
               ),
             ),
             const SizedBox(height: 24),
-            Container(
-              width: double.infinity,
-              height: 56,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                gradient: _isFormValid
-                  ? LinearGradient(colors: [colorScheme.primary, colorScheme.secondary])
-                  : null,
-                color: _isFormValid ? null : colorScheme.surfaceContainerHighest
-              ),
-              child: ElevatedButton(
-                onPressed: widget.recurringTransactionModel != null && _isFormValid
+            GradientButton(
+              isValid: _isFormValid,
+              onPressed: widget.recurringTransactionModel != null && _isFormValid
+              ? () {
+                final amount = _formatter.parse(_amountController.text.trim()).toDouble();
+                ref.read(recurringTransactionProvider.notifier).updateRecurring(
+                  widget.recurringTransactionModel!.id,
+                  _titleController.text,
+                  amount,
+                  _selectedCategory!,
+                  _startDate!,
+                  _selectedFrequency!,
+                  _selectedType!,
+                  endDate: _endDate
+                );
+                Navigator.pop(context);
+              } :
+              _isFormValid
                   ? () {
-                  final amount = _formatter.parse(_amountController.text.trim()).toDouble();
-                  ref.read(recurringTransactionProvider.notifier).updateRecurring(
-                    widget.recurringTransactionModel!.id,
-                    _titleController.text,
-                    amount,
-                    _selectedCategory!,
-                    _startDate!,
-                    _selectedFrequency!,
-                    _selectedType!,
-                    endDate: _endDate
-                  );
-                  Navigator.pop(context);
-                } :
-                _isFormValid
-                  ? () {
-                  final amount = _formatter.parse(_amountController.text.trim()).toDouble();
-                  ref.read(recurringTransactionProvider.notifier).addRecurring(
-                    title: _titleController.text,
-                    amount: amount,
-                    category: _selectedCategory!,
-                    startDate: _startDate!,
-                    endDate: _endDate,
-                    frequency: _selectedFrequency!,
-                    type: _selectedType!,
-                    isActive: true
-                  );
-                  Navigator.pop(context);
-                } : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  foregroundColor: _isFormValid ? colorScheme.onPrimary : colorScheme.onSurfaceVariant,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                ),
-                child: Text(
-                  AppStrings.saveButton.tr(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
-                ),
-              ),
+                final amount = _formatter.parse(_amountController.text.trim()).toDouble();
+                ref.read(recurringTransactionProvider.notifier).addRecurring(
+                  title: _titleController.text,
+                  amount: amount,
+                  category: _selectedCategory!,
+                  startDate: _startDate!,
+                  endDate: _endDate,
+                  frequency: _selectedFrequency!,
+                  type: _selectedType!,
+                  isActive: true
+                );
+                Navigator.pop(context);
+              } : null
             ),
           ],
         ),

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/core/utils/currency_input_formatter.dart';
+import 'package:pocketwise/core/widgets/gradient_button.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 import 'package:pocketwise/features/transaction/providers/transaction_provider.dart';
 
@@ -166,48 +167,28 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
               ),
             ),
             const SizedBox(height: 24),
-            Container(
-              width: double.infinity,
-              height: 56,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                gradient: _isFormValid
-                  ? LinearGradient(colors: [colorScheme.primary, colorScheme.secondary])
-                  : null,
-                  color: _isFormValid ? null : colorScheme.surfaceContainerHighest
-              ),
-              child: ElevatedButton(
-                onPressed: widget.transactionModel != null && _isFormValid
+            GradientButton(
+              isValid: _isFormValid,
+              onPressed: widget.transactionModel != null && _isFormValid
+              ? () {
+                final amount = _formatter.parse(_amountController.text.trim()).toDouble();
+                ref.read(transactionProvider.notifier).updateTransaction(
+                  widget.transactionModel!.id,
+                  _titleController.text,
+                  amount,
+                  _selectedCategory!,
+                  _selectedType!
+                );
+                Navigator.pop(context);
+              } :
+              _isFormValid
                   ? () {
-                  final amount = _formatter.parse(_amountController.text.trim()).toDouble();
-                  ref.read(transactionProvider.notifier).updateTransaction(
-                    widget.transactionModel!.id,
-                    _titleController.text,
-                    amount,
-                    _selectedCategory!,
-                    _selectedType!
-                    );
-                  Navigator.pop(context);
-                  } :
-                _isFormValid
-                  ? () {
-                  final amount = _formatter.parse(_amountController.text.trim()).toDouble();
-                  ref.read(transactionProvider.notifier).addTransaction(
-                    _titleController.text, amount, _selectedCategory!, DateTime.now(), _selectedType!
-                  );
-                  Navigator.pop(context);
-                } : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  foregroundColor: _isFormValid ? colorScheme.onPrimary : colorScheme.onSurfaceVariant,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                ),
-                child: Text(
-                  AppStrings.saveButton.tr(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
-                ),
-              ),
+                final amount = _formatter.parse(_amountController.text.trim()).toDouble();
+                ref.read(transactionProvider.notifier).addTransaction(
+                  _titleController.text, amount, _selectedCategory!, DateTime.now(), _selectedType!
+                );
+                Navigator.pop(context);
+              } : null,
             ),
           ],
         ),
