@@ -28,6 +28,7 @@
 
   "addNewTransaction": "Yeni İşlem Ekle",
   "updateTransaction": "İşlemi Güncelle",
+  "updateRecurringTransaction": "Tekrarlayan İşlemi Güncelle",
   "transactionTitleHintOptional": "İşlem Başlığı (İsteğe bağlı)",
   "transactionTitleHint": "İşlem Başlığı",
   "saveButton": "İŞLEMİ KAYDET",

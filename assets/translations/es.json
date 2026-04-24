@@ -28,6 +28,7 @@
 
   "addNewTransaction": "Agregar Nueva Transacción",
   "updateTransaction": "Actualizar transacción",
+  "updateRecurringTransaction": "Actualizar transacción recurrente",
   "transactionTitleHintOptional": "Título de la Transacción (Opcional)",
   "transactionTitleHint": "Título de la Transacción",
   "saveButton": "GUARDAR TRANSACCIÓN",

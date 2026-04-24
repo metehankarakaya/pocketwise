@@ -28,6 +28,7 @@ class AppStrings {
 
   static const String addNewTransaction = "addNewTransaction";
   static const String updateTransaction = "updateTransaction";
+  static const String updateRecurringTransaction = "updateRecurringTransaction";
   static const String transactionTitleHintOptional = "transactionTitleHintOptional";
   static const String transactionTitleHint = "transactionTitleHint";
   static const String saveButton = "saveButton";
