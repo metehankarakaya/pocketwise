@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/models/recurring_transaction_model.dart';
 import 'package:pocketwise/core/utils/currency_input_formatter.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
+import 'package:pocketwise/features/transaction/widgets/date_picker_field.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_type_button.dart';
 
 import '../../../core/constants/app_strings.dart';
@@ -169,66 +170,12 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
               }).toList(),
             ),
             const SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppStrings.startDate.tr(),
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                InkWell(
-                  onTap: () async {
-                    final DateTime? picked = await showDatePicker(
-                      context: context,
-                      initialDate: _startDate,
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime(2100),
-                    );
-                    if (picked != null && picked != _startDate) {
-                      setState(() => _startDate = picked);
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: colorScheme.outlineVariant.withValues(alpha: 0.5),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_today_rounded,
-                          size: 20,
-                          color: colorScheme.primary
-                        ),
-                        const SizedBox(width: 12),
-                        Text(
-                          _startDate == null
-                            ? AppStrings.pickStartDate.tr()
-                            : DateFormat('dd MMMM yyyy', context.locale.toString()).format(_startDate!),
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            color: _startDate == null ? colorScheme.onSurfaceVariant : colorScheme.onSurface,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 14,
-                          color: colorScheme.onSurfaceVariant
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            DatePickerField(
+              label: AppStrings.startDate.tr(),
+              selectedDate: _startDate,
+              firstDate: DateTime.now(),
+              hintText: AppStrings.pickStartDate.tr(),
+              onDateSelected: (picked) => setState(() => _startDate = picked),
             ),
             const SizedBox(height: 8),
             Wrap(
@@ -249,66 +196,12 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
               }).toList(),
             ),
             const SizedBox(height: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppStrings.endDateOptional.tr(),
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                InkWell(
-                  onTap: () async {
-                    final DateTime? picked = await showDatePicker(
-                      context: context,
-                      initialDate: _endDate,
-                      firstDate: _startDate ?? DateTime.now(),
-                      lastDate: DateTime(2100),
-                    );
-                    if (picked != null && picked != _endDate) {
-                      setState(() => _endDate = picked);
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: colorScheme.outlineVariant.withValues(alpha: 0.5),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_today_rounded,
-                          size: 20,
-                          color: colorScheme.primary
-                        ),
-                        const SizedBox(width: 12),
-                        Text(
-                          _endDate == null
-                            ? AppStrings.pickEndDate.tr()
-                            : DateFormat('dd MMMM yyyy', context.locale.toString()).format(_endDate!),
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            color: _endDate == null ? colorScheme.onSurfaceVariant : colorScheme.onSurface,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 14,
-                          color: colorScheme.onSurfaceVariant
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            DatePickerField(
+              label: AppStrings.endDateOptional.tr(),
+              selectedDate: _endDate,
+              firstDate: _startDate ?? DateTime.now(),
+              hintText: AppStrings.pickEndDate.tr(),
+              onDateSelected: (picked) => setState(() => _endDate = picked),
             ),
             const SizedBox(height: 20),
             TextField(
