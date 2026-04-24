@@ -15,16 +15,19 @@ class AppStrings {
   static const String wasCleared = "wasCleared";
   static const String recurringTransactionsCleared = "recurringTransactionsCleared";
 
-  static const String food = "food";
+  static const String restaurant = "restaurant";
   static const String groceries = "groceries";
   static const String transport = "transport";
+  static const String fuel = "fuel";
+  static const String rent = "rent";
   static const String bills = "bills";
   static const String subscription = "subscription";
   static const String entertainment = "entertainment";
-  static const String health = "health";
   static const String clothing = "clothing";
-  static const String technology = "technology";
+  static const String health = "health";
   static const String education = "education";
+  static const String technology = "technology";
+  static const String salary = "salary";
 
   static const String addNewTransaction = "addNewTransaction";
   static const String addNewRecurringTransaction = "addNewRecurringTransaction";
@@ -62,14 +65,17 @@ class AppStrings {
 }
 
 const List<String> categories = [
-  AppStrings.food,
+  AppStrings.restaurant,
   AppStrings.groceries,
   AppStrings.transport,
+  AppStrings.fuel,
+  AppStrings.rent,
   AppStrings.bills,
   AppStrings.subscription,
   AppStrings.entertainment,
-  AppStrings.health,
   AppStrings.clothing,
-  AppStrings.technology,
+  AppStrings.health,
   AppStrings.education,
+  AppStrings.technology,
+  AppStrings.salary,
 ];
