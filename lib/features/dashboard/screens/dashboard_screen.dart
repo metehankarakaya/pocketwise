@@ -6,7 +6,9 @@ import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:pocketwise/core/providers/user_provider.dart';
 import 'package:pocketwise/core/widgets/empty_holder.dart';
 import 'package:pocketwise/features/dashboard/providers/dashboard_provider.dart';
+import 'package:pocketwise/features/dashboard/screens/transaction_search_delegate.dart';
 import 'package:pocketwise/features/settings/screens/settings_screen.dart';
+import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
 import 'package:pocketwise/features/transaction/screens/add_transaction_modal.dart';
 import 'package:pocketwise/features/transaction/widgets/transaction_list_item.dart';
 import 'package:pocketwise/features/dashboard/widgets/transaction_summary_card.dart';
@@ -132,7 +134,19 @@ class DashboardScreen extends ConsumerWidget {
             SliverToBoxAdapter(
               child: SizedBox(
                 width: double.infinity,
-                child: Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,)
+                child: Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    Text(AppStrings.recentTransactions.tr(), style: Theme.of(context).textTheme.headlineSmall,),
+                    IconButton(
+                      onPressed: () => showSearch(
+                        context: context,
+                        delegate: TransactionSearchDelegate(transactions, ref.read(recurringTransactionProvider))
+                      ),
+                      icon: Icon(Icons.search),
+                    )
+                  ],
+                )
               ),
             ),
             if (filteredTransactions.isNotEmpty)
