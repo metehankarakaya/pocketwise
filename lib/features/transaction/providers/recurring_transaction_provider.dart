@@ -96,6 +96,7 @@ class RecurringTransactionProvider extends Notifier<List<RecurringTransactionMod
       type: type,
       isActive: isActive
     );
+    _prefs = await SharedPreferences.getInstance();
     state = [recurringTransactionModel, ...state];
     state.sort((a, b) => b.startDate.compareTo(a.startDate));
     final String encodedData = jsonEncode(state.map((recurringTransaction) => recurringTransaction.toJson()).toList());
