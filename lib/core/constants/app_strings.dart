@@ -62,6 +62,9 @@ class AppStrings {
   static const String cancel = "cancel";
   static const String save = "save";
 
+  static const String search = "search";
+  static const String noResultsForQuery = "noResultsForQuery";
+
 }
 
 const List<String> categories = [

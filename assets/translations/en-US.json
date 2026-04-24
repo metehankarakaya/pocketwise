@@ -61,6 +61,9 @@
   "noTransactionsYet": "No transactions yet",
 
   "cancel": "Cancel",
-  "save": "Save"
+  "save": "Save",
+
+  "search": "Search",
+  "noResultsForQuery": "No results found for: {query}"
 
 }
