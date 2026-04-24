@@ -27,6 +27,7 @@
   "education": "Eğitim",
 
   "addNewTransaction": "Yeni İşlem Ekle",
+  "updateTransaction": "İşlemi Güncelle",
   "transactionTitleHintOptional": "İşlem Başlığı (İsteğe bağlı)",
   "transactionTitleHint": "İşlem Başlığı",
   "saveButton": "İŞLEMİ KAYDET",

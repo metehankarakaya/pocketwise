@@ -27,6 +27,7 @@
   "education": "Education",
 
   "addNewTransaction": "Add New Transaction",
+  "updateTransaction": "Update Transaction",
   "transactionTitleHintOptional": "Transaction Title (Optional)",
   "transactionTitleHint": "Transaction Title",
   "saveButton": "SAVE TRANSACTION",

@@ -27,6 +27,7 @@
   "education": "Bildung",
 
   "addNewTransaction": "Neue Transaktion hinzufügen",
+  "updateTransaction": "Transaktion aktualisieren",
   "transactionTitleHintOptional": "Transaktionstitel (Optional)",
   "transactionTitleHint": "Transaktionstitel",
   "saveButton": "TRANSAKTION SPEICHERN",
