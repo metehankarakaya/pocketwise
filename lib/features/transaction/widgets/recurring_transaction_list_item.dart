@@ -8,7 +8,8 @@ import 'package:pocketwise/features/transaction/providers/recurring_transaction_
 
 class RecurringTransactionListItem extends ConsumerWidget {
   final RecurringTransactionModel recurringTransaction;
-  const RecurringTransactionListItem({super.key, required this.recurringTransaction});
+  final VoidCallback onLongPress;
+  const RecurringTransactionListItem({super.key, required this.recurringTransaction, required this.onLongPress});
 
   static IconData _iconForCategory(String category) {
     switch (category) {
@@ -68,6 +69,7 @@ class RecurringTransactionListItem extends ConsumerWidget {
     return Opacity(
       opacity: recurringTransaction.isActive ? 1.0 : 0.6,
       child: ListTile(
+        onLongPress: onLongPress,
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(

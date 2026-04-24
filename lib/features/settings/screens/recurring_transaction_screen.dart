@@ -6,6 +6,7 @@ import 'package:pocketwise/features/transaction/providers/recurring_transaction_
 import 'package:pocketwise/features/transaction/widgets/recurring_transaction_list_item.dart';
 
 import '../../../core/widgets/empty_holder.dart';
+import '../../transaction/widgets/add_transaction_modal.dart';
 
 class RecurringTransactionScreen extends ConsumerWidget {
   const RecurringTransactionScreen({super.key});
@@ -23,7 +24,13 @@ class RecurringTransactionScreen extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: Column(
           children: recurringTransactions.map((element) {
-            return Card(child: RecurringTransactionListItem(recurringTransaction: element));
+            return Card(
+              clipBehavior: Clip.antiAlias,
+              child: RecurringTransactionListItem(
+              onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
+              recurringTransaction: element,
+              )
+            );
           }).toList(),
         ),
       ) : EmptyHolder(
