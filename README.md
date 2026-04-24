@@ -8,10 +8,13 @@ A personal expense tracker built with Flutter. Track your income and expenses, a
 |---|---|
 | ![Dashboard Light](screenshots/dashboard_light.jpeg) | ![Dashboard Dark](screenshots/dashboard_dark.jpeg) |
 
-![Transaction Modal](screenshots/transaction_modal.jpeg)
-![Recurring Transactions](screenshots/recurring_transactions.jpeg)
-![Settings](screenshots/settings.jpeg)
-![Recurring Modal](screenshots/recurring_modal.jpeg)
+| Transaction Modal | Recurring Transactions |
+|---|---|
+| ![Transaction Modal](screenshots/transaction_modal.jpeg) | ![Recurring Transactions](screenshots/recurring_transactions.jpeg) |
+
+| Settings | Recurring Modal |
+|---|---|
+| ![Settings](screenshots/settings.jpeg) | ![Recurring Modal](screenshots/recurring_modal.jpeg) |
 
 ## ✨ Features
 
