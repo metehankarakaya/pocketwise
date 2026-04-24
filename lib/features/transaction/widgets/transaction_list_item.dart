@@ -11,7 +11,7 @@ class TransactionListItem extends StatelessWidget {
 
   static final formatter = NumberFormat.currency(locale: 'tr_TR', symbol: '₺');
 
-  static String _formatDate(DateTime date) {
+  String _formatDate(BuildContext context, DateTime date) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final transactionDay = DateTime(date.year, date.month, date.day);
@@ -19,11 +19,11 @@ class TransactionListItem extends StatelessWidget {
     final diff = today.difference(transactionDay).inDays;
 
     if (diff == 0) {
-      return DateFormat.Hm("tr_TR").format(date);
+      return DateFormat.Hm(context.locale.toString()).format(date);
     } else if (diff < 7) {
-      return DateFormat("EEEE HH:mm", "tr_TR").format(date);
+      return DateFormat("EEEE HH:mm", context.locale.toString()).format(date);
     } else {
-      return DateFormat("d MMM HH:mm", "tr_TR").format(date);
+      return DateFormat("d MMM HH:mm", context.locale.toString()).format(date);
     }
   }
 
@@ -69,7 +69,7 @@ class TransactionListItem extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        _formatDate(transactionModel.createdAt),
+        _formatDate(context, transactionModel.createdAt),
         style: TextStyle(
           color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
         ),
