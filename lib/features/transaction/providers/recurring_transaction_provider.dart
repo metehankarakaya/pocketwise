@@ -126,6 +126,26 @@ class RecurringTransactionProvider extends Notifier<List<RecurringTransactionMod
     await _prefs.setString("recurring_transactions", encodedData);
   }
 
+  void updateRecurring(String id, String title, double amount, String category, DateTime startDate, RecurringFrequency frequency, TransactionType type, {DateTime? endDate}) async {
+    state = state.map((recurring) {
+      if (recurring.id == id) {
+        return recurring.copyWith(
+          title: title,
+          amount: amount,
+          category: category,
+          startDate: startDate,
+          frequency: frequency,
+          type: type,
+          endDate: endDate
+        );
+      }
+      return recurring;
+    }).toList();
+    state.sort((a, b) => b.startDate.compareTo(a.startDate));
+    final String encodedData = jsonEncode(state.map((transaction) => transaction.toJson()).toList());
+    await _prefs.setString("recurring_transactions", encodedData);
+  }
+
 }
 
 final recurringTransactionProvider = NotifierProvider<RecurringTransactionProvider, List<RecurringTransactionModel>>(RecurringTransactionProvider.new);
