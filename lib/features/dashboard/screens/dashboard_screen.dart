@@ -159,10 +159,13 @@ class DashboardScreen extends ConsumerWidget {
             else
               SliverFillRemaining(
                 hasScrollBody: false,
-                child: Card(
-                  child: EmptyHolder(
-                    iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
-                    title: activeFilter != null ? "${AppStrings.noTransactionsInPeriod.tr()} (${activeFilter.name.tr()})" : AppStrings.noTransactionsYet.tr(),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Card(
+                    child: EmptyHolder(
+                      iconData: activeFilter != null ? Icons.search_off : Icons.receipt_long,
+                      title: activeFilter != null ? "${AppStrings.noTransactionsInPeriod.tr()} (${activeFilter.name.tr()})" : AppStrings.noTransactionsYet.tr(),
+                    ),
                   ),
                 ),
               )
