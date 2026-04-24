@@ -196,8 +196,10 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
             TextField(
               controller: _titleController,
               onChanged: (_) => setState(() {}),
+              maxLength: 50,
               style: TextStyle(color: colorScheme.onSurface),
               decoration: InputDecoration(
+                counterText: "",
                 hintText: AppStrings.transactionTitleHint.tr(),
                 hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
                 filled: true,

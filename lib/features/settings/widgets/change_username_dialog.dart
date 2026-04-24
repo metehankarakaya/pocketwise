@@ -14,8 +14,10 @@ class ChangeUsernameDialog {
       builder: (context) => AlertDialog(
         title: Text(AppStrings.changeUsername.tr()),
         content: TextField(
+          maxLength: 50,
           controller: controller,
           decoration: InputDecoration(
+            counterText: "",
             hintText: AppStrings.enterUsername.tr(),
           ),
         ),

@@ -141,8 +141,10 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
             const SizedBox(height: 20),
             TextField(
               controller: _titleController,
+              maxLength: 50,
               style: TextStyle(color: colorScheme.onSurface),
               decoration: InputDecoration(
+                counterText: "",
                 hintText: AppStrings.transactionTitleHintOptional.tr(),
                 hintStyle: TextStyle(color: colorScheme.onSurfaceVariant),
                 filled: true,
