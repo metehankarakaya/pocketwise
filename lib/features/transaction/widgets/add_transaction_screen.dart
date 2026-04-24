@@ -98,7 +98,6 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
             TextField(
               controller: _amountController,
               onChanged: (_) => setState(() {}),
-              autofocus: true,
               textAlign: TextAlign.center,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               style: TextStyle(

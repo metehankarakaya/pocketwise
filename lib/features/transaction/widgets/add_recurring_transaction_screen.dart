@@ -108,7 +108,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
             Text(
               widget.recurringTransactionModel != null
               ? AppStrings.updateRecurringTransaction.tr()
-              : AppStrings.addNewTransaction.tr(),
+              : AppStrings.addNewRecurringTransaction.tr(),
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: colorScheme.onSurface,
               fontWeight: FontWeight.bold
@@ -116,7 +116,6 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
             TextField(
               controller: _amountController,
               onChanged: (_) => setState(() {}),
-              //autofocus: true,
               textAlign: TextAlign.center,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               style: TextStyle(
