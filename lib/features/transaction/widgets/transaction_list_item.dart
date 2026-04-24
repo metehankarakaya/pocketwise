@@ -3,42 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:pocketwise/core/constants/app_strings.dart';
 import 'package:pocketwise/core/models/transaction_model.dart';
 
+import '../../../core/utils/category_utils.dart';
+
 class TransactionListItem extends StatelessWidget {
   final TransactionModel transactionModel;
   final VoidCallback? onLongPress;
   const TransactionListItem({super.key, required this.transactionModel, this.onLongPress});
-
-  static IconData _iconForCategory(String category) {
-    switch (category) {
-      case AppStrings.food: return Icons.fastfood;
-      case AppStrings.groceries: return Icons.shopping_cart;
-      case AppStrings.transport: return Icons.directions_car;
-      case AppStrings.bills: return Icons.receipt_long;
-      case AppStrings.entertainment: return Icons.movie;
-      case AppStrings.health: return Icons.local_hospital;
-      case AppStrings.education: return Icons.school;
-      case AppStrings.clothing: return Icons.checkroom;
-      case AppStrings.technology: return Icons.devices;
-      case AppStrings.subscription: return Icons.subscriptions;
-      default: return Icons.category;
-    }
-  }
-
-  static Color _colorForCategory(String category) {
-    switch (category) {
-      case AppStrings.food: return Colors.orange;
-      case AppStrings.groceries: return Colors.blue;
-      case AppStrings.transport: return Colors.purple;
-      case AppStrings.bills: return Colors.red;
-      case AppStrings.entertainment: return Colors.pink;
-      case AppStrings.health: return Colors.teal;
-      case AppStrings.education: return Colors.indigo;
-      case AppStrings.clothing: return Colors.brown;
-      case AppStrings.technology: return Colors.cyan;
-      case AppStrings.subscription: return Colors.deepPurple;
-      default: return Colors.grey;
-    }
-  }
 
   static final formatter = NumberFormat.currency(locale: 'tr_TR', symbol: '₺');
 
@@ -64,7 +34,7 @@ class TransactionListItem extends StatelessWidget {
     final formattedAmount = formatter.format(transactionModel.amount);
 
     final bool isExpense = transactionModel.type == TransactionType.expense;
-    final categoryColor = _colorForCategory(transactionModel.category);
+    final categoryColor = colorForCategory(transactionModel.category);
 
     final Color amountColor = isExpense
       ? Colors.redAccent.shade400
@@ -79,7 +49,7 @@ class TransactionListItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Icon(
-          _iconForCategory(transactionModel.category),
+          iconForCategory(transactionModel.category),
           color: categoryColor,
           size: 24,
         ),

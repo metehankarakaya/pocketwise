@@ -41,19 +41,6 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
       _startDate != null;
   }
 
-  final List<String> _categories = [
-    AppStrings.food,
-    AppStrings.groceries,
-    AppStrings.transport,
-    AppStrings.bills,
-    AppStrings.subscription,
-    AppStrings.entertainment,
-    AppStrings.health,
-    AppStrings.clothing,
-    AppStrings.technology,
-    AppStrings.education,
-  ];
-
   final List<RecurringFrequency> _frequencies = [
     RecurringFrequency.daily,
     RecurringFrequency.weekly,
@@ -168,7 +155,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
               spacing: 8.0,
               runSpacing: 8.0,
               alignment: WrapAlignment.center,
-              children: _categories.map((c) {
+              children: categories.map((c) {
                 return ChoiceChip(
                   showCheckmark: false,
                   selected: _selectedCategory == c,

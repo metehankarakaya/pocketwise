@@ -60,3 +60,16 @@ class AppStrings {
   static const String save = "save";
 
 }
+
+const List<String> categories = [
+  AppStrings.food,
+  AppStrings.groceries,
+  AppStrings.transport,
+  AppStrings.bills,
+  AppStrings.subscription,
+  AppStrings.entertainment,
+  AppStrings.health,
+  AppStrings.clothing,
+  AppStrings.technology,
+  AppStrings.education,
+];

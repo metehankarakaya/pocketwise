@@ -32,19 +32,6 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
       _amountController.text != "₺0,00";
   }
 
-  final List<String> _categories = [
-    AppStrings.food,
-    AppStrings.groceries,
-    AppStrings.transport,
-    AppStrings.bills,
-    AppStrings.subscription,
-    AppStrings.entertainment,
-    AppStrings.health,
-    AppStrings.clothing,
-    AppStrings.technology,
-    AppStrings.education,
-  ];
-
   @override
   void initState() {
     // TODO: implement initState
@@ -150,7 +137,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
               spacing: 8.0,
               runSpacing: 8.0,
               alignment: WrapAlignment.center,
-              children: _categories.map((c) {
+              children: categories.map((c) {
                 return ChoiceChip(
                   showCheckmark: false,
                   selected: _selectedCategory == c,
