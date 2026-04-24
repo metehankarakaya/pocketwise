@@ -63,7 +63,7 @@
   "cancel": "Cancelar",
   "save": "Guardar",
 
-  "search": "Buscar",
+  "searchEmptyState": "Empieza a buscar transacciones",
   "noResultsForQuery": "No se encontraron resultados para: {query}"
 
 }

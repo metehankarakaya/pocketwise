@@ -63,7 +63,7 @@
   "cancel": "İptal",
   "save": "Kaydet",
 
-  "search": "Arama yap",
+  "searchEmptyState": "İşlemleri aramaya başla",
   "noResultsForQuery": "Sonuç bulunamadı: {query}"
 
 }

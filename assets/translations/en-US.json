@@ -63,7 +63,7 @@
   "cancel": "Cancel",
   "save": "Save",
 
-  "search": "Search",
+  "searchEmptyState": "Start searching transactions",
   "noResultsForQuery": "No results found for: {query}"
 
 }

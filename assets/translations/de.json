@@ -63,7 +63,7 @@
   "cancel": "Abbrechen",
   "save": "Speichern",
 
-  "search": "Suchen",
+  "searchEmptyState": "Beginne mit der Suche nach Transaktionen",
   "noResultsForQuery": "Keine Ergebnisse gefunden für: {query}"
 
 }
