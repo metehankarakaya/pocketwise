@@ -40,14 +40,24 @@ class TransactionSearchDelegate extends SearchDelegate<dynamic> {
   @override
   Widget buildSuggestions(BuildContext context) {
     if (query.isEmpty) {
-      return EmptyHolder(iconData: Icons.search, title: AppStrings.search.tr());
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          child: EmptyHolder(iconData: Icons.search, title: AppStrings.search.tr())
+        ),
+      );
     }
     final filteredTransactions = transactions.where((t) => t.title.toLowerCase().contains(query.toLowerCase()) || t.category.toLowerCase().contains(query.toLowerCase())).toList();
     final filteredRecurringTransactions = recurringTransactions.where((r) => r.title.toLowerCase().contains(query.toLowerCase()) || r.category.toLowerCase().contains(query.toLowerCase())).toList();
     if (filteredTransactions.isEmpty && filteredRecurringTransactions.isEmpty) {
-      return EmptyHolder(iconData: Icons.search_off, title: AppStrings.noResultsForQuery.tr(
-        namedArgs: {"query": query}
-      ));
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          child: EmptyHolder(iconData: Icons.search_off, title: AppStrings.noResultsForQuery.tr(
+            namedArgs: {"query": query}
+          )),
+        ),
+      );
     } else {
       return ListView(
         children: [
