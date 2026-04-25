@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:pocketwise/core/providers/theme_provider.dart';
@@ -9,6 +10,7 @@ import 'package:pocketwise/features/security/screens/pin_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
   await EasyLocalization.ensureInitialized();
   await initializeDateFormatting('tr_TR', null);
 
@@ -26,6 +28,7 @@ void main() async {
       child: ProviderScope(child: const MyApp()),
     ),
   );
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends ConsumerWidget {
