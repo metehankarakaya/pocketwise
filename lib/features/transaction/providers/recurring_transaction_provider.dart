@@ -18,41 +18,44 @@ class RecurringTransactionProvider extends Notifier<List<RecurringTransactionMod
   late SharedPreferences _prefs;
 
   void _processRecurringTransactions() async {
+    final now = DateTime.now();
     for (var recurring in state) {
       int periodsElapsed = 0;
-      final daysDiff = DateTime.now().difference(recurring.lastProcessDate).inDays;
+      final lastProcess = recurring.lastProcessDate;
+      final daysDiff = now.difference(lastProcess).inDays;
+
       if (recurring.isActive) {
-        if (recurring.endDate != null && DateTime.now().isAfter(recurring.endDate!)) {
+        if (recurring.endDate != null && now.isAfter(recurring.endDate!)) {
           continue;
         }
         switch (recurring.frequency) {
           case RecurringFrequency.daily:
             periodsElapsed = daysDiff;
-          break;
+            break;
           case RecurringFrequency.weekly:
-            periodsElapsed = daysDiff~/7;
-          break;
+            periodsElapsed = daysDiff ~/ 7;
+            break;
           case RecurringFrequency.monthly:
-            periodsElapsed = daysDiff~/30;
-          break;
+            periodsElapsed = (now.year - lastProcess.year) * 12 + (now.month - lastProcess.month);
+            break;
           case RecurringFrequency.yearly:
-            periodsElapsed = daysDiff~/365;
-          break;
+            periodsElapsed = now.year - lastProcess.year;
+            break;
         }
         if (periodsElapsed > 0) {
-          for (int i=0; i<periodsElapsed; i++) {
+          for (int i = 0; i < periodsElapsed; i++) {
             ref.read(transactionProvider.notifier).addTransaction(
               recurring.title,
               recurring.amount,
               recurring.category,
-              recurring.lastProcessDate.add(Duration(days: i+1)),
+              recurring.lastProcessDate.add(Duration(days: i + 1)),
               recurring.type
             );
           }
         }
         state = state.map((element) {
           if (element.id == recurring.id) {
-            return element.copyWith(lastProcessDate: DateTime.now());
+            return element.copyWith(lastProcessDate: now);
           }
           return element;
         }).toList();
