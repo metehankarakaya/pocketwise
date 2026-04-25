@@ -4,9 +4,11 @@ class AppStrings {
   static const String recentTransactions = "recentTransactions";
   static const String totalBalance = "totalBalance";
   static const String settingsTitle = "settingsTitle";
+  static const String app = "app";
   static const String changeUsername = "changeUsername";
   static const String enterUsername = "enterUsername";
   static const String changeLanguage = "changeLanguage";
+  static const String transactions = "transactions";
   static const String viewRecurringTransactions = "viewRecurringTransactions";
   static const String recurringTransactions = "recurringTransactions";
   static const String noRecurringTransactions = "noRecurringTransactions";
@@ -14,6 +16,8 @@ class AppStrings {
   static const String clearAllTransactions = "clearAllTransactions";
   static const String wasCleared = "wasCleared";
   static const String recurringTransactionsCleared = "recurringTransactionsCleared";
+  static const String appSecurity = "appSecurity";
+  static const String appLock = "appLock";
 
   static const String restaurant = "restaurant";
   static const String groceries = "groceries";

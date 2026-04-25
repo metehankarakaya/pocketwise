@@ -32,69 +32,96 @@ class SettingsScreen extends ConsumerWidget {
         ],
       ),
       body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 50,),
-            SettingsItem(
-              onTap: () => ChangeUsernameDialog.show(context, ref),
-              title: AppStrings.changeUsername.tr(),
-            ),
-            SettingsItem(
-              onTap: () => ChangeLanguageModal.show(context),
-              title: AppStrings.changeLanguage.tr(),
-            ),
-            SettingsItem(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecurringTransactionScreen())
-                );
-              },
-              title: AppStrings.viewRecurringTransactions.tr(),
-            ),
-            SettingsItem(
-              onTap: () => ConfirmationDialog.show(
-                context,
-                title: AppStrings.clearAllTransactionsTitle.tr(),
-                content: AppStrings.clearAllTransactionsMessage.tr(),
-                onPressed: () {
-                  Navigator.pop(context);
-                  ref.read(transactionProvider.notifier).clearAllTransactions();
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(AppStrings.wasCleared.tr()),
-                      backgroundColor: Colors.green.shade400,
-                      behavior: SnackBarBehavior.floating,
-                      duration: Duration(seconds: 2),
-                    )
-                  );
-                }
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              ListTile(
+                title: Text(AppStrings.app.tr()),
               ),
-              title: AppStrings.clearAllTransactions.tr(),
-            ),
-            SettingsItem(
-              onTap: () => ConfirmationDialog.show(
-                context,
-                title: AppStrings.clearAllRecurringTransactionsTitle.tr(),
-                content: AppStrings.clearAllRecurringTransactionsMessage.tr(),
-                onPressed: () {
-                  Navigator.pop(context);
-                  ref.read(recurringTransactionProvider.notifier).clearAllRecurringTransactions();
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(AppStrings.recurringTransactionsCleared.tr()),
-                      backgroundColor: Colors.green.shade400,
-                      behavior: SnackBarBehavior.floating,
-                      duration: Duration(seconds: 2),
-                    )
-                  );
-                }
+              Card(
+                child: SettingsItem(
+                  onTap: () => ChangeUsernameDialog.show(context, ref),
+                  title: AppStrings.changeUsername.tr(),
+                ),
               ),
-              title: AppStrings.clearAllRecurringTransactions.tr(),
-            ),
-          ],
+              Card(
+                child: SettingsItem(
+                  onTap: () => ChangeLanguageModal.show(context),
+                  title: AppStrings.changeLanguage.tr(),
+                ),
+              ),
+              ListTile(
+                title: Text(AppStrings.transactions.tr()),
+              ),
+              Card(
+                child: SettingsItem(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RecurringTransactionScreen())
+                    );
+                  },
+                  title: AppStrings.viewRecurringTransactions.tr(),
+                ),
+              ),
+              Card(
+                child: SettingsItem(
+                  onTap: () => ConfirmationDialog.show(
+                    context,
+                    title: AppStrings.clearAllTransactionsTitle.tr(),
+                    content: AppStrings.clearAllTransactionsMessage.tr(),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      ref.read(transactionProvider.notifier).clearAllTransactions();
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(AppStrings.wasCleared.tr()),
+                          backgroundColor: Colors.green.shade400,
+                          behavior: SnackBarBehavior.floating,
+                          duration: Duration(seconds: 2),
+                        )
+                      );
+                    }
+                  ),
+                  title: AppStrings.clearAllTransactions.tr(),
+                ),
+              ),
+              Card(
+                child: SettingsItem(
+                  onTap: () => ConfirmationDialog.show(
+                    context,
+                    title: AppStrings.clearAllRecurringTransactionsTitle.tr(),
+                    content: AppStrings.clearAllRecurringTransactionsMessage.tr(),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      ref.read(recurringTransactionProvider.notifier).clearAllRecurringTransactions();
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(AppStrings.recurringTransactionsCleared.tr()),
+                          backgroundColor: Colors.green.shade400,
+                          behavior: SnackBarBehavior.floating,
+                          duration: Duration(seconds: 2),
+                        )
+                      );
+                    }
+                  ),
+                  title: AppStrings.clearAllRecurringTransactions.tr(),
+                ),
+              ),
+              ListTile(
+                title: Text(AppStrings.appSecurity.tr()),
+              ),
+              Card(
+                child: SettingsItem(
+                  onTap: () {},
+                  title: AppStrings.appLock.tr(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
