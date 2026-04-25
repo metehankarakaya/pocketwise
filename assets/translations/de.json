@@ -74,6 +74,22 @@
   "clearAllTransactionsMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Transaktionen werden dauerhaft gelöscht.",
   "clearAllRecurringTransactionsTitle": "Alle wiederkehrenden Transaktionen löschen?",
   "clearAllRecurringTransactionsMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Alle wiederkehrenden Transaktionen werden dauerhaft gelöscht.",
-  "delete": "Löschen"
+  "delete": "Löschen",
+
+  "pinForgotWarning": "Wenn du deinen PIN vergisst, musst du die App neu installieren.",
+  "enableAppLock": "App-Sperre aktivieren",
+  "disableAppLock": "App-Sperre deaktivieren",
+  "changeAppLock": "App-Sperre PIN ändern",
+  "pinSetupTitle": "PIN einrichten",
+  "pinConfirmTitle": "PIN bestätigen",
+  "pinVerifyTitle": "PIN eingeben",
+  "pinSetupHeading": "PIN festlegen",
+  "pinConfirmHeading": "PIN bestätigen",
+  "pinDisableHeading": "Sperre deaktivieren",
+  "pinChangeHeading": "PIN ändern",
+  "pinSetupSubtitle": "Erstelle eine 6-stellige PIN zur Sicherung deiner Wallet.",
+  "pinConfirmSubtitle": "PIN erneut eingeben.",
+  "pinDisableSubtitle": "Aktuelle PIN eingeben, um die Sperre zu deaktivieren.",
+  "pinChangeSubtitle": "Aktuelle PIN eingeben, um fortzufahren."
 
 }

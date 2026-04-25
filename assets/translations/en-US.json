@@ -74,6 +74,22 @@
   "clearAllTransactionsMessage": "This action cannot be undone. All transactions will be permanently deleted.",
   "clearAllRecurringTransactionsTitle": "Delete all recurring transactions?",
   "clearAllRecurringTransactionsMessage": "This action cannot be undone. All recurring transactions will be permanently deleted.",
-  "delete": "Delete"
+  "delete": "Delete",
+
+  "pinForgotWarning": "If you forget your PIN, you will need to reinstall the app.",
+  "enableAppLock": "Enable App Lock",
+  "disableAppLock": "Disable App Lock",
+  "changeAppLock": "Change App Lock PIN",
+  "pinSetupTitle": "Set up PIN",
+  "pinConfirmTitle": "Confirm PIN",
+  "pinVerifyTitle": "Enter PIN",
+  "pinSetupHeading": "Set your PIN",
+  "pinConfirmHeading": "Confirm your PIN",
+  "pinDisableHeading": "Disable App Lock",
+  "pinChangeHeading": "Change your PIN",
+  "pinSetupSubtitle": "Create a 6-digit PIN to secure your wallet.",
+  "pinConfirmSubtitle": "Enter your PIN again to confirm.",
+  "pinDisableSubtitle": "Enter your current PIN to disable the lock.",
+  "pinChangeSubtitle": "Enter your current PIN to continue."
 
 }

@@ -74,6 +74,22 @@
   "clearAllTransactionsMessage": "Esta acción no se puede deshacer. Todas las transacciones se eliminarán permanentemente.",
   "clearAllRecurringTransactionsTitle": "¿Eliminar todas las transacciones recurrentes?",
   "clearAllRecurringTransactionsMessage": "Esta acción no se puede deshacer. Todas las transacciones recurrentes se eliminarán permanentemente.",
-  "delete": "Eliminar"
+  "delete": "Eliminar",
+
+  "pinForgotWarning": "Si olvidas tu PIN, deberás reinstalar la aplicación.",
+  "enableAppLock": "Activar bloqueo de app",
+  "disableAppLock": "Desactivar bloqueo de app",
+  "changeAppLock": "Cambiar PIN de bloqueo",
+  "pinSetupTitle": "Configurar PIN",
+  "pinConfirmTitle": "Confirmar PIN",
+  "pinVerifyTitle": "Ingresar PIN",
+  "pinSetupHeading": "Establece tu PIN",
+  "pinConfirmHeading": "Confirma tu PIN",
+  "pinDisableHeading": "Desactivar bloqueo",
+  "pinChangeHeading": "Cambiar PIN",
+  "pinSetupSubtitle": "Crea un PIN de 6 dígitos para proteger tu cartera.",
+  "pinConfirmSubtitle": "Ingresa tu PIN nuevamente para confirmar.",
+  "pinDisableSubtitle": "Ingresa tu PIN actual para desactivar el bloqueo.",
+  "pinChangeSubtitle": "Ingresa tu PIN actual para continuar."
 
 }

@@ -75,6 +75,22 @@ class AppStrings {
   static const String clearAllRecurringTransactionsTitle = "clearAllRecurringTransactionsTitle";
   static const String clearAllRecurringTransactionsMessage = "clearAllRecurringTransactionsMessage";
 
+  static const String pinForgotWarning = "pinForgotWarning";
+  static const String enableAppLock = "enableAppLock";
+  static const String disableAppLock = "disableAppLock";
+  static const String changeAppLock = "changeAppLock";
+  static const String pinSetupTitle = "pinSetupTitle";
+  static const String pinConfirmTitle = "pinConfirmTitle";
+  static const String pinVerifyTitle = "pinVerifyTitle";
+  static const String pinSetupHeading = "pinSetupHeading";
+  static const String pinConfirmHeading = "pinConfirmHeading";
+  static const String pinDisableHeading = "pinDisableHeading";
+  static const String pinChangeHeading = "pinChangeHeading";
+  static const String pinSetupSubtitle = "pinSetupSubtitle";
+  static const String pinConfirmSubtitle = "pinConfirmSubtitle";
+  static const String pinDisableSubtitle = "pinDisableSubtitle";
+  static const String pinChangeSubtitle = "pinChangeSubtitle";
+
 }
 
 const List<String> categories = [

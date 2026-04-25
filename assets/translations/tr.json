@@ -74,6 +74,22 @@
   "clearAllTransactionsMessage": "Bu işlem geri alınamaz. Tüm işlemler kalıcı olarak silinecek.",
   "clearAllRecurringTransactionsTitle": "Tüm tekrarlayan işlemleri sil?",
   "clearAllRecurringTransactionsMessage": "Bu işlem geri alınamaz. Tüm tekrarlayan işlemler kalıcı olarak silinecek.",
-  "delete": "Sil"
+  "delete": "Sil",
+
+  "pinForgotWarning": "PIN unutursan uygulamayı silip tekrar yüklemen gerekir.",
+  "enableAppLock": "Uygulama Kilidini Ekle",
+  "disableAppLock": "Uygulama Kilidini Kaldır",
+  "changeAppLock": "Uygulama Kilidini Değiştir",
+  "pinSetupTitle": "PIN Kur",
+  "pinConfirmTitle": "PIN Onayla",
+  "pinVerifyTitle": "PIN Gir",
+  "pinSetupHeading": "PIN'ini Belirle",
+  "pinConfirmHeading": "PIN'ini Onayla",
+  "pinDisableHeading": "Kilidi Kaldır",
+  "pinChangeHeading": "PIN'ini Değiştir",
+  "pinSetupSubtitle": "Cüzdanını güvence altına almak için 6 haneli PIN oluştur.",
+  "pinConfirmSubtitle": "PIN'ini tekrar gir.",
+  "pinDisableSubtitle": "Kilidi kaldırmak için mevcut PIN'ini gir.",
+  "pinChangeSubtitle": "Devam etmek için mevcut PIN'ini gir."
 
 }
