@@ -61,33 +61,36 @@ class TransactionSearchDelegate extends SearchDelegate<dynamic> {
         ),
       );
     } else {
-      return ListView(
-        children: [
-          ...filteredTransactions.map((element) => Card(
-            clipBehavior: Clip.antiAlias,
-            child: Dismissible(
-              key: Key(element.id),
-              direction: DismissDirection.endToStart,
-              onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(element.id),
-              child: TransactionListItem(
-                onLongPress: () => AddTransactionModal.show(context, transactionModel: element),
-                transactionModel: element
-              ),
-            ))
-          ),
-          ...filteredRecurringTransactions.map((element) => Card(
-            clipBehavior: Clip.antiAlias,
-            child: Dismissible(
-              key: Key(element.id),
-              direction: DismissDirection.endToStart,
-              onDismissed: (_) => ref.read(recurringTransactionProvider.notifier).removeRecurring(element.id),
-              child: RecurringTransactionListItem(
-                onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
-                recurringTransaction: element
-              ),
-            ))
-          )
-        ],
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            ...filteredTransactions.map((element) => Card(
+              clipBehavior: Clip.antiAlias,
+              child: Dismissible(
+                key: Key(element.id),
+                direction: DismissDirection.endToStart,
+                onDismissed: (_) => ref.read(transactionProvider.notifier).removeTransaction(element.id),
+                child: TransactionListItem(
+                  onLongPress: () => AddTransactionModal.show(context, transactionModel: element),
+                  transactionModel: element
+                ),
+              ))
+            ),
+            ...filteredRecurringTransactions.map((element) => Card(
+              clipBehavior: Clip.antiAlias,
+              child: Dismissible(
+                key: Key(element.id),
+                direction: DismissDirection.endToStart,
+                onDismissed: (_) => ref.read(recurringTransactionProvider.notifier).removeRecurring(element.id),
+                child: RecurringTransactionListItem(
+                  onLongPress: () => AddTransactionModal.show(context, recurringTransactionModel: element),
+                  recurringTransaction: element
+                ),
+              ))
+            )
+          ],
+        ),
       );
     }
   }
