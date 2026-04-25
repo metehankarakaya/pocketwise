@@ -35,15 +35,15 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
   DateTime? _endDate;
 
   bool get _isFormValid {
+    final amount = _formatter.tryParse(_amountController.text.trim());
     return _selectedType != null &&
       _selectedCategory != null &&
       _selectedFrequency != null &&
-      _amountController.text.isNotEmpty &&
-      _amountController.text != "₺0,00" &&
+      amount != null &&
+      amount > 0 &&
       _titleController.text.trim().isNotEmpty &&
       _startDate != null;
   }
-
   final List<RecurringFrequency> _frequencies = [
     RecurringFrequency.daily,
     RecurringFrequency.weekly,

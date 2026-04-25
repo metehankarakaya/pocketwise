@@ -28,10 +28,11 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
   late TextEditingController _amountController;
 
   bool get _isFormValid {
+    final amount = _formatter.tryParse(_amountController.text.trim());
     return _selectedType != null &&
       _selectedCategory != null &&
-      _amountController.text.isNotEmpty &&
-      _amountController.text != "₺0,00";
+      amount != null &&
+      amount > 0;
   }
 
   @override
