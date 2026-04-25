@@ -10,19 +10,38 @@ import '../providers/security_provider.dart';
 enum PinStage { setup, confirm, verify }
 enum PinMode { setup, disable, change, verify }
 
-class PinSetupScreen extends ConsumerStatefulWidget {
+class PinScreen extends ConsumerStatefulWidget {
   final PinMode mode;
-  const PinSetupScreen({super.key, this.mode = PinMode.setup});
+  const PinScreen({super.key, this.mode = PinMode.setup});
 
   @override
   ConsumerState createState() => _PinSetupScreenState();
 }
 
-class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
+class _PinSetupScreenState extends ConsumerState<PinScreen> with SingleTickerProviderStateMixin {
+
+  late AnimationController _shakeController;
+  late Animation<double> _shakeAnimation;
 
   @override
   void initState() {
     super.initState();
+    _shakeController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    _shakeAnimation = TweenSequence([
+      TweenSequenceItem(tween: Tween(begin: 0.0, end: -12.0), weight: 1),
+      TweenSequenceItem(tween: Tween(begin: -12.0, end: 12.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 12.0, end: -12.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: -12.0, end: 12.0), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 12.0, end: 0.0), weight: 1),
+    ]).animate(_shakeController);
+    _shakeController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        setState(() => enteredPin = "");
+      }
+    });
     switch (widget.mode) {
       case PinMode.setup:
         currentStage = PinStage.setup;
@@ -35,6 +54,12 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
         currentStage = PinStage.verify;
         break;
     }
+  }
+
+  @override
+  void dispose() {
+    _shakeController.dispose();
+    super.dispose();
   }
 
   String enteredPin = "";
@@ -57,9 +82,7 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
           ref.read(securityProvider.notifier).enableLock(enteredPin);
           Navigator.pop(context);
         } else {
-          setState(() {
-            enteredPin = "";
-          });
+          _shakeController.forward(from: 0);
         }
       } else if (currentStage == PinStage.verify) {
         final isValid = await ref.read(securityProvider.notifier).verifyPin(enteredPin);
@@ -80,7 +103,7 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
             );
           }
         } else {
-          setState(() => enteredPin = "");
+          _shakeController.forward(from: 0);
         }
       }
     }
@@ -149,24 +172,33 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(6, (index) {
-                bool isFilled = enteredPin.length > index;
-                return Container(
-                  width: 30,
-                  height: 30,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isFilled ? colorScheme.primary : Colors.transparent,
-                    border: Border.all(
-                      color: isFilled ? colorScheme.primary : colorScheme.outline,
-                      width: 2,
-                    ),
-                  ),
+            AnimatedBuilder(
+              animation: _shakeAnimation,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(_shakeAnimation.value, 0),
+                  child: child,
                 );
-              }),
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(6, (index) {
+                  bool isFilled = enteredPin.length > index;
+                  return Container(
+                    width: 30,
+                    height: 30,
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isFilled ? colorScheme.primary : Colors.transparent,
+                      border: Border.all(
+                        color: isFilled ? colorScheme.primary : colorScheme.outline,
+                        width: 2,
+                      ),
+                    ),
+                  );
+                }),
+              ),
             ),
             const Spacer(),
             GridView.builder(
