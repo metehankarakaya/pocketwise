@@ -34,125 +34,141 @@ class SettingsScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ListTile(
-                title: Text(AppStrings.app.tr()),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => ChangeUsernameDialog.show(context, ref),
-                  title: AppStrings.changeUsername.tr(),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => ChangeLanguageModal.show(context),
-                  title: AppStrings.changeLanguage.tr(),
-                ),
-              ),
-              ListTile(
-                title: Text(AppStrings.transactions.tr()),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RecurringTransactionScreen())
-                    );
-                  },
-                  title: AppStrings.viewRecurringTransactions.tr(),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => ConfirmationDialog.show(
-                    context,
-                    title: AppStrings.clearAllTransactionsTitle.tr(),
-                    content: AppStrings.clearAllTransactionsMessage.tr(),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      ref.read(transactionProvider.notifier).clearAllTransactions();
-                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(AppStrings.wasCleared.tr()),
-                          backgroundColor: Colors.green.shade400,
-                          behavior: SnackBarBehavior.floating,
-                          duration: Duration(seconds: 2),
-                        )
-                      );
-                    }
+      body: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text(AppStrings.app.tr()),
                   ),
-                  title: AppStrings.clearAllTransactions.tr(),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => ConfirmationDialog.show(
-                    context,
-                    title: AppStrings.clearAllRecurringTransactionsTitle.tr(),
-                    content: AppStrings.clearAllRecurringTransactionsMessage.tr(),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      ref.read(recurringTransactionProvider.notifier).clearAllRecurringTransactions();
-                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(AppStrings.recurringTransactionsCleared.tr()),
-                          backgroundColor: Colors.green.shade400,
-                          behavior: SnackBarBehavior.floating,
-                          duration: Duration(seconds: 2),
-                        )
-                      );
-                    }
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => ChangeUsernameDialog.show(context, ref),
+                      title: AppStrings.changeUsername.tr(),
+                    ),
                   ),
-                  title: AppStrings.clearAllRecurringTransactions.tr(),
-                ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => ChangeLanguageModal.show(context),
+                      title: AppStrings.changeLanguage.tr(),
+                    ),
+                  ),
+                ],
               ),
-              ListTile(
-                trailing: Tooltip(
-                  showDuration: Duration(seconds: 2),
-                  message: AppStrings.pinForgotWarning.tr(),
-                  child: Icon(Icons.info_outline),
-                ),
-                title: Text(AppStrings.appSecurity.tr()),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text(AppStrings.transactions.tr()),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RecurringTransactionScreen())
+                        );
+                      },
+                      title: AppStrings.viewRecurringTransactions.tr(),
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => ConfirmationDialog.show(
+                        context,
+                        title: AppStrings.clearAllTransactionsTitle.tr(),
+                        content: AppStrings.clearAllTransactionsMessage.tr(),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          ref.read(transactionProvider.notifier).clearAllTransactions();
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(AppStrings.wasCleared.tr()),
+                              backgroundColor: Colors.green.shade400,
+                              behavior: SnackBarBehavior.floating,
+                              duration: Duration(seconds: 2),
+                            )
+                          );
+                        }
+                      ),
+                      title: AppStrings.clearAllTransactions.tr(),
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => ConfirmationDialog.show(
+                        context,
+                        title: AppStrings.clearAllRecurringTransactionsTitle.tr(),
+                        content: AppStrings.clearAllRecurringTransactionsMessage.tr(),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          ref.read(recurringTransactionProvider.notifier).clearAllRecurringTransactions();
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(AppStrings.recurringTransactionsCleared.tr()),
+                              backgroundColor: Colors.green.shade400,
+                              behavior: SnackBarBehavior.floating,
+                              duration: Duration(seconds: 2),
+                            )
+                          );
+                        }
+                      ),
+                      title: AppStrings.clearAllRecurringTransactions.tr(),
+                    ),
+                  ),
+                ],
               ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen())),
-                  enabled: !isLockEnabled,
-                  title: AppStrings.enableAppLock.tr(),
-                ),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  ListTile(
+                    trailing: Tooltip(
+                      showDuration: Duration(seconds: 2),
+                      message: AppStrings.pinForgotWarning.tr(),
+                      child: Icon(Icons.info_outline),
+                    ),
+                    title: Text(AppStrings.appSecurity.tr()),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen())),
+                      enabled: !isLockEnabled,
+                      title: AppStrings.enableAppLock.tr(),
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.disable))),
+                      enabled: isLockEnabled,
+                      title: AppStrings.disableAppLock.tr(),
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.change))),
+                      enabled: isLockEnabled,
+                      title: AppStrings.changeAppLock.tr(),
+                    ),
+                  ),
+                ],
               ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.disable))),
-                  enabled: isLockEnabled,
-                  title: AppStrings.disableAppLock.tr(),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                child: SettingsItem(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.change))),
-                  enabled: isLockEnabled,
-                  title: AppStrings.changeAppLock.tr(),
-                ),
-              ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
