@@ -4,6 +4,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:pocketwise/core/providers/theme_provider.dart';
 import 'package:pocketwise/features/dashboard/screens/dashboard_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:pocketwise/features/security/providers/security_provider.dart';
+import 'package:pocketwise/features/security/screens/pin_setup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,12 +33,13 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLockEnabled = ref.watch(securityProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: DashboardScreen(),
+      home: isLockEnabled ? PinSetupScreen(mode: PinMode.verify,) : DashboardScreen(),
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: ref.watch(themeModeProvider),
