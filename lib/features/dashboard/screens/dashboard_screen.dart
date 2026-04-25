@@ -33,23 +33,25 @@ class DashboardScreen extends ConsumerWidget {
       DateFilter.year
     ];
 
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
     final filteredTransactions = activeFilter == null
         ? transactions
         : transactions.where((t) {
-      final now = DateTime.now();
-      final today = DateTime(now.year, now.month, now.day);
-      final transactionDay = DateTime(t.createdAt.year, t.createdAt.month, t.createdAt.day);
-      final diff = today.difference(transactionDay).inDays;
-      if (activeFilter == DateFilter.today) {
-        return diff == 0;
-      } else if (activeFilter == DateFilter.week) {
-        return diff <= 7;
-      } else if (activeFilter == DateFilter.month) {
-        return diff <= 30;
-      } else if (activeFilter == DateFilter.year) {
-        return diff <= 365;
-      }
-      return true;
+      switch (activeFilter) {
+        case DateFilter.today:
+          return !t.createdAt.isBefore(today);
+        case DateFilter.week:
+          final weekAgo = now.subtract(const Duration(days: 7));
+          return t.createdAt.isAfter(weekAgo);
+        case DateFilter.month:
+          final monthAgo = DateTime(now.year, now.month - 1, now.day);
+          return t.createdAt.isAfter(monthAgo);
+        case DateFilter.year:
+          final yearAgo = DateTime(now.year - 1, now.month, now.day);
+          return t.createdAt.isAfter(yearAgo);
+        }
     }).toList();
 
     return Scaffold(
