@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/widgets/confirmation_dialog.dart';
 import 'package:pocketwise/features/security/providers/security_provider.dart';
-import 'package:pocketwise/features/security/screens/pin_setup_screen.dart';
+import 'package:pocketwise/features/security/screens/pin_screen.dart';
 import 'package:pocketwise/features/settings/screens/recurring_transaction_screen.dart';
 import 'package:pocketwise/features/settings/widgets/change_username_dialog.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
@@ -124,21 +124,21 @@ class SettingsScreen extends ConsumerWidget {
               ),
               Card(
                 child: SettingsItem(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinSetupScreen())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen())),
                   enabled: !isLockEnabled,
                   title: AppStrings.enableAppLock.tr(),
                 ),
               ),
               Card(
                 child: SettingsItem(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinSetupScreen(mode: PinMode.disable))),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.disable))),
                   enabled: isLockEnabled,
                   title: AppStrings.disableAppLock.tr(),
                 ),
               ),
               Card(
                 child: SettingsItem(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinSetupScreen(mode: PinMode.change))),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.change))),
                   enabled: isLockEnabled,
                   title: AppStrings.changeAppLock.tr(),
                 ),
