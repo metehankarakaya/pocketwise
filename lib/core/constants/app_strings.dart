@@ -75,6 +75,8 @@ class AppStrings {
   static const String clearAllRecurringTransactionsTitle = "clearAllRecurringTransactionsTitle";
   static const String clearAllRecurringTransactionsMessage = "clearAllRecurringTransactionsMessage";
 
+  static const String pinVerifyHeading = "pinVerifyHeading";
+  static const String pinVerifySubtitle = "pinVerifySubtitle";
   static const String pinForgotWarning = "pinForgotWarning";
   static const String enableAppLock = "enableAppLock";
   static const String disableAppLock = "disableAppLock";

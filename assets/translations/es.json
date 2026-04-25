@@ -76,6 +76,8 @@
   "clearAllRecurringTransactionsMessage": "Esta acción no se puede deshacer. Todas las transacciones recurrentes se eliminarán permanentemente.",
   "delete": "Eliminar",
 
+  "pinVerifyHeading": "Ingresa tu PIN",
+  "pinVerifySubtitle": "Ingresa tu PIN para continuar.",
   "pinForgotWarning": "Si olvidas tu PIN, deberás reinstalar la aplicación.",
   "enableAppLock": "Activar bloqueo de app",
   "disableAppLock": "Desactivar bloqueo de app",

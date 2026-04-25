@@ -76,6 +76,8 @@
   "clearAllRecurringTransactionsMessage": "This action cannot be undone. All recurring transactions will be permanently deleted.",
   "delete": "Delete",
 
+  "pinVerifyHeading": "Enter your PIN",
+  "pinVerifySubtitle": "Enter your PIN to continue.",
   "pinForgotWarning": "If you forget your PIN, you will need to reinstall the app.",
   "enableAppLock": "Enable App Lock",
   "disableAppLock": "Disable App Lock",

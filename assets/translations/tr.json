@@ -76,6 +76,8 @@
   "clearAllRecurringTransactionsMessage": "Bu işlem geri alınamaz. Tüm tekrarlayan işlemler kalıcı olarak silinecek.",
   "delete": "Sil",
 
+  "pinVerifyHeading": "PIN'ini Gir",
+  "pinVerifySubtitle": "Devam etmek için PIN'ini gir.",
   "pinForgotWarning": "PIN unutursan uygulamayı silip tekrar yüklemen gerekir.",
   "enableAppLock": "Uygulama Kilidini Ekle",
   "disableAppLock": "Uygulama Kilidini Kaldır",

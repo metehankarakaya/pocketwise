@@ -76,6 +76,8 @@
   "clearAllRecurringTransactionsMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Alle wiederkehrenden Transaktionen werden dauerhaft gelöscht.",
   "delete": "Löschen",
 
+  "pinVerifyHeading": "PIN eingeben",
+  "pinVerifySubtitle": "Gib deinen PIN ein, um fortzufahren.",
   "pinForgotWarning": "Wenn du deinen PIN vergisst, musst du die App neu installieren.",
   "enableAppLock": "App-Sperre aktivieren",
   "disableAppLock": "App-Sperre deaktivieren",
