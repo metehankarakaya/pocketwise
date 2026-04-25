@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketwise/core/widgets/confirmation_dialog.dart';
+import 'package:pocketwise/features/security/providers/security_provider.dart';
+import 'package:pocketwise/features/security/screens/pin_setup_screen.dart';
 import 'package:pocketwise/features/settings/screens/recurring_transaction_screen.dart';
 import 'package:pocketwise/features/settings/widgets/change_username_dialog.dart';
 import 'package:pocketwise/features/transaction/providers/recurring_transaction_provider.dart';
@@ -18,6 +20,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
+    final isLockEnabled = ref.watch(securityProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -112,12 +115,32 @@ class SettingsScreen extends ConsumerWidget {
                 ),
               ),
               ListTile(
+                trailing: Tooltip(
+                  showDuration: Duration(seconds: 2),
+                  message: AppStrings.pinForgotWarning.tr(),
+                  child: Icon(Icons.info_outline),
+                ),
                 title: Text(AppStrings.appSecurity.tr()),
               ),
               Card(
                 child: SettingsItem(
-                  onTap: () {},
-                  title: AppStrings.appLock.tr(),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinSetupScreen())),
+                  enabled: !isLockEnabled,
+                  title: AppStrings.enableAppLock.tr(),
+                ),
+              ),
+              Card(
+                child: SettingsItem(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinSetupScreen(mode: PinMode.disable))),
+                  enabled: isLockEnabled,
+                  title: AppStrings.disableAppLock.tr(),
+                ),
+              ),
+              Card(
+                child: SettingsItem(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinSetupScreen(mode: PinMode.change))),
+                  enabled: isLockEnabled,
+                  title: AppStrings.changeAppLock.tr(),
                 ),
               ),
             ],
