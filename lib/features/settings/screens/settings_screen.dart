@@ -43,12 +43,14 @@ class SettingsScreen extends ConsumerWidget {
                 title: Text(AppStrings.app.tr()),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => ChangeUsernameDialog.show(context, ref),
                   title: AppStrings.changeUsername.tr(),
                 ),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => ChangeLanguageModal.show(context),
                   title: AppStrings.changeLanguage.tr(),
@@ -58,6 +60,7 @@ class SettingsScreen extends ConsumerWidget {
                 title: Text(AppStrings.transactions.tr()),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () {
                     Navigator.push(
@@ -69,6 +72,7 @@ class SettingsScreen extends ConsumerWidget {
                 ),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => ConfirmationDialog.show(
                     context,
@@ -92,6 +96,7 @@ class SettingsScreen extends ConsumerWidget {
                 ),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => ConfirmationDialog.show(
                     context,
@@ -123,6 +128,7 @@ class SettingsScreen extends ConsumerWidget {
                 title: Text(AppStrings.appSecurity.tr()),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen())),
                   enabled: !isLockEnabled,
@@ -130,6 +136,7 @@ class SettingsScreen extends ConsumerWidget {
                 ),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.disable))),
                   enabled: isLockEnabled,
@@ -137,6 +144,7 @@ class SettingsScreen extends ConsumerWidget {
                 ),
               ),
               Card(
+                clipBehavior: Clip.antiAlias,
                 child: SettingsItem(
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PinScreen(mode: PinMode.change))),
                   enabled: isLockEnabled,
