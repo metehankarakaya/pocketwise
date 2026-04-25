@@ -4,10 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/app_strings.dart';
+import '../../dashboard/screens/dashboard_screen.dart';
 import '../providers/security_provider.dart';
 
 enum PinStage { setup, confirm, verify }
-enum PinMode { setup, disable, change }
+enum PinMode { setup, disable, change, verify }
 
 class PinSetupScreen extends ConsumerStatefulWidget {
   final PinMode mode;
@@ -25,6 +26,9 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
     switch (widget.mode) {
       case PinMode.setup:
         currentStage = PinStage.setup;
+        break;
+      case PinMode.verify:
+        currentStage = PinStage.verify;
         break;
       case PinMode.disable:
       case PinMode.change:
@@ -69,6 +73,11 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
               enteredPin = "";
               currentStage = PinStage.setup;
             });
+          } else if (widget.mode == PinMode.verify) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => DashboardScreen())
+            );
           }
         } else {
           setState(() => enteredPin = "");
@@ -92,7 +101,7 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
       case PinStage.setup: return AppStrings.pinSetupTitle.tr();
       case PinStage.confirm: return AppStrings.pinConfirmTitle.tr();
       case PinStage.verify: return AppStrings.pinVerifyTitle.tr();
-      }
+    }
   }
 
   String get _title {
@@ -100,10 +109,10 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
       case PinStage.setup: return AppStrings.pinSetupHeading.tr();
       case PinStage.confirm: return AppStrings.pinConfirmHeading.tr();
       case PinStage.verify:
-        return widget.mode == PinMode.disable
-          ? AppStrings.pinDisableHeading.tr()
-          : AppStrings.pinChangeHeading.tr();
-      }
+        if (widget.mode == PinMode.disable) return AppStrings.pinDisableHeading.tr();
+        if (widget.mode == PinMode.change) return AppStrings.pinChangeHeading.tr();
+        return AppStrings.pinVerifyHeading.tr();
+    }
   }
 
   String get _subtitle {
@@ -111,10 +120,10 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
       case PinStage.setup: return AppStrings.pinSetupSubtitle.tr();
       case PinStage.confirm: return AppStrings.pinConfirmSubtitle.tr();
       case PinStage.verify:
-        return widget.mode == PinMode.disable
-          ? AppStrings.pinDisableSubtitle.tr()
-          : AppStrings.pinChangeSubtitle.tr();
-      }
+        if (widget.mode == PinMode.disable) return AppStrings.pinDisableSubtitle.tr();
+        if (widget.mode == PinMode.change) return AppStrings.pinChangeSubtitle.tr();
+        return AppStrings.pinVerifySubtitle.tr();
+    }
   }
 
   @override
@@ -123,7 +132,7 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_appBarTitle)
+        title: widget.mode == PinMode.verify ? null : Text(_appBarTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
