@@ -64,6 +64,12 @@
   "save": "Guardar",
 
   "searchEmptyState": "Empieza a buscar transacciones",
-  "noResultsForQuery": "No se encontraron resultados para: {query}"
+  "noResultsForQuery": "No se encontraron resultados para: {query}",
+
+  "clearAllTransactionsTitle": "¿Eliminar todas las transacciones?",
+  "clearAllTransactionsMessage": "Esta acción no se puede deshacer. Todas las transacciones se eliminarán permanentemente.",
+  "clearAllRecurringTransactionsTitle": "¿Eliminar todas las transacciones recurrentes?",
+  "clearAllRecurringTransactionsMessage": "Esta acción no se puede deshacer. Todas las transacciones recurrentes se eliminarán permanentemente.",
+  "delete": "Eliminar"
 
 }

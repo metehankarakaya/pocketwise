@@ -64,6 +64,12 @@
   "save": "Kaydet",
 
   "searchEmptyState": "İşlemleri aramaya başla",
-  "noResultsForQuery": "Sonuç bulunamadı: {query}"
+  "noResultsForQuery": "Sonuç bulunamadı: {query}",
+
+  "clearAllTransactionsTitle": "Tüm işlemleri sil?",
+  "clearAllTransactionsMessage": "Bu işlem geri alınamaz. Tüm işlemler kalıcı olarak silinecek.",
+  "clearAllRecurringTransactionsTitle": "Tüm tekrarlayan işlemleri sil?",
+  "clearAllRecurringTransactionsMessage": "Bu işlem geri alınamaz. Tüm tekrarlayan işlemler kalıcı olarak silinecek.",
+  "delete": "Sil"
 
 }

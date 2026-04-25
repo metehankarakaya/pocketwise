@@ -64,6 +64,12 @@
   "save": "Speichern",
 
   "searchEmptyState": "Beginne mit der Suche nach Transaktionen",
-  "noResultsForQuery": "Keine Ergebnisse gefunden für: {query}"
+  "noResultsForQuery": "Keine Ergebnisse gefunden für: {query}",
+
+  "clearAllTransactionsTitle": "Alle Transaktionen löschen?",
+  "clearAllTransactionsMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Transaktionen werden dauerhaft gelöscht.",
+  "clearAllRecurringTransactionsTitle": "Alle wiederkehrenden Transaktionen löschen?",
+  "clearAllRecurringTransactionsMessage": "Diese Aktion kann nicht rückgängig gemacht werden. Alle wiederkehrenden Transaktionen werden dauerhaft gelöscht.",
+  "delete": "Löschen"
 
 }

@@ -64,6 +64,12 @@
   "save": "Save",
 
   "searchEmptyState": "Start searching transactions",
-  "noResultsForQuery": "No results found for: {query}"
+  "noResultsForQuery": "No results found for: {query}",
+
+  "clearAllTransactionsTitle": "Delete all transactions?",
+  "clearAllTransactionsMessage": "This action cannot be undone. All transactions will be permanently deleted.",
+  "clearAllRecurringTransactionsTitle": "Delete all recurring transactions?",
+  "clearAllRecurringTransactionsMessage": "This action cannot be undone. All recurring transactions will be permanently deleted.",
+  "delete": "Delete"
 
 }

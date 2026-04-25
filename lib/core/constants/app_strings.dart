@@ -65,6 +65,12 @@ class AppStrings {
   static const String searchEmptyState = "searchEmptyState";
   static const String noResultsForQuery = "noResultsForQuery";
 
+  static const String clearAllTransactionsTitle = "clearAllTransactionsTitle";
+  static const String clearAllTransactionsMessage = "clearAllTransactionsMessage";
+  static const String delete = "delete";
+  static const String clearAllRecurringTransactionsTitle = "clearAllRecurringTransactionsTitle";
+  static const String clearAllRecurringTransactionsMessage = "clearAllRecurringTransactionsMessage";
+
 }
 
 const List<String> categories = [
