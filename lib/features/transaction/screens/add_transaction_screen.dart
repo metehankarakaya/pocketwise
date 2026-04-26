@@ -181,8 +181,8 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
                       namedArgs: {
                         "title": _titleController.text.isNotEmpty ? _titleController.text : _selectedCategory!.tr()
                       }
-                    )),
-                    backgroundColor: Colors.green.shade400,
+                    ), style: TextStyle(color: colorScheme.onPrimaryContainer),),
+                    backgroundColor: colorScheme.primaryContainer,
                     behavior: SnackBarBehavior.floating,
                     duration: Duration(seconds: 2),
                   )

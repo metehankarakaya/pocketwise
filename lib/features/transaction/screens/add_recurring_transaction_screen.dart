@@ -246,8 +246,8 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                       namedArgs: {
                         "title": _titleController.text.trim()
                       }
-                    )),
-                    backgroundColor: Colors.green.shade400,
+                    ), style: TextStyle(color: colorScheme.onPrimaryContainer),),
+                    backgroundColor: colorScheme.primaryContainer,
                     behavior: SnackBarBehavior.floating,
                     duration: Duration(seconds: 2),
                   )

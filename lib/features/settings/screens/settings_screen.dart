@@ -19,6 +19,9 @@ class SettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     final themeMode = ref.watch(themeModeProvider);
     final isLockEnabled = ref.watch(securityProvider);
 
@@ -92,8 +95,11 @@ class SettingsScreen extends ConsumerWidget {
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(AppStrings.wasCleared.tr()),
-                              backgroundColor: Colors.green.shade400,
+                              content: Text(
+                                AppStrings.wasCleared.tr(),
+                                style: TextStyle(color: colorScheme.onPrimaryContainer),
+                              ),
+                              backgroundColor: colorScheme.primaryContainer,
                               behavior: SnackBarBehavior.floating,
                               duration: Duration(seconds: 2),
                             )
@@ -116,8 +122,11 @@ class SettingsScreen extends ConsumerWidget {
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(AppStrings.recurringTransactionsCleared.tr()),
-                              backgroundColor: Colors.green.shade400,
+                              content: Text(
+                                AppStrings.recurringTransactionsCleared.tr(),
+                                style: TextStyle(color: colorScheme.onPrimaryContainer),
+                              ),
+                              backgroundColor: colorScheme.primaryContainer,
                               behavior: SnackBarBehavior.floating,
                               duration: Duration(seconds: 2),
                             )
