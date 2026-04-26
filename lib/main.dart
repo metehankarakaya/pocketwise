@@ -42,9 +42,21 @@ class MyApp extends ConsumerWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: isLockEnabled ? PinScreen(mode: PinMode.verify,) : DashboardScreen(),
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      home: isLockEnabled ? PinScreen(mode: PinMode.verify) : const DashboardScreen(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF6366F1),
+          brightness: Brightness.light,
+        ),
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF6366F1),
+          brightness: Brightness.dark,
+        ),
+      ),
       themeMode: ref.watch(themeModeProvider),
     );
   }
