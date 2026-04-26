@@ -5,6 +5,9 @@ import 'package:pocketwise/core/models/transaction_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../core/providers/notification_provider.dart';
+import '../../../core/services/notification_service.dart';
+
 class TransactionProvider extends Notifier<List<TransactionModel>>{
   @override
   List<TransactionModel> build() {
@@ -23,6 +26,7 @@ class TransactionProvider extends Notifier<List<TransactionModel>>{
       state = decodedData.map((element) => TransactionModel.fromJson((element))).toList();
       state.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     }
+    _updateNotification();
   }
 
   void addTransaction(String title, double amount, String category, DateTime createdAt, TransactionType type) async {
@@ -31,18 +35,21 @@ class TransactionProvider extends Notifier<List<TransactionModel>>{
     state.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     final String encodedData = jsonEncode(state.map((transaction) => transaction.toJson()).toList());
     await _prefs.setString("transactions", encodedData);
+    _updateNotification();
   }
 
   void removeTransaction(String id) async {
     state = state.where((element) => element.id != id).toList();
     final String encodedData = jsonEncode(state.map((transaction) => transaction.toJson()).toList());
     await _prefs.setString("transactions", encodedData);
+    _updateNotification();
   }
 
   void clearAllTransactions() async {
     state = [];
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove("transactions");
+    _updateNotification();
   }
 
   double get totalIncome {
@@ -63,6 +70,15 @@ class TransactionProvider extends Notifier<List<TransactionModel>>{
     return totalIncome - totalExpense;
   }
 
+  void _updateNotification() {
+    final isEnabled = ref.read(notificationProvider);
+    if (isEnabled) {
+      NotificationService().showBalanceNotification(totalBalance, totalIncome, totalExpense);
+    } else {
+      NotificationService().cancelNotification();
+    }
+  }
+
   void updateTransaction(String id, String title, double amount, String category, TransactionType type) async {
     state = state.map((transaction) {
       if (transaction.id == id) {
@@ -73,6 +89,7 @@ class TransactionProvider extends Notifier<List<TransactionModel>>{
     state.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     final String encodedData = jsonEncode(state.map((transaction) => transaction.toJson()).toList());
     await _prefs.setString("transactions", encodedData);
+    _updateNotification();
   }
 
 }
