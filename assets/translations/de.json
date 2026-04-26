@@ -36,6 +36,7 @@
   "addNewTransaction": "Neue Transaktion hinzufügen",
   "updateTransaction": "Transaktion aktualisieren",
   "addNewRecurringTransaction": "Neue wiederkehrende Transaktion hinzufügen",
+  "transactionAddedWithName": "{title} erfolgreich hinzugefügt.",
   "updateRecurringTransaction": "Wiederkehrende Transaktion aktualisieren",
   "transactionTitleHintOptional": "Transaktionstitel (Optional)",
   "transactionTitleHint": "Transaktionstitel",

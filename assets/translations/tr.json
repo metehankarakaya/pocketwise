@@ -36,6 +36,7 @@
   "addNewTransaction": "Yeni İşlem Ekle",
   "updateTransaction": "İşlemi Güncelle",
   "addNewRecurringTransaction": "Yeni Tekrarlayan İşlem Ekle",
+  "transactionAddedWithName": "{title} başarıyla eklendi.",
   "updateRecurringTransaction": "Tekrarlayan İşlemi Güncelle",
   "transactionTitleHintOptional": "İşlem Başlığı (İsteğe bağlı)",
   "transactionTitleHint": "İşlem Başlığı",
