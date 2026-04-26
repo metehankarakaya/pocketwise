@@ -8,9 +8,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:pocketwise/features/security/providers/security_provider.dart';
 import 'package:pocketwise/features/security/screens/pin_screen.dart';
 
+import 'core/services/notification_service.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
+  await NotificationService.initialize();
   await EasyLocalization.ensureInitialized();
   await initializeDateFormatting('tr_TR', null);
 
