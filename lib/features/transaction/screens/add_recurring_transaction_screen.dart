@@ -82,10 +82,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
     final colorScheme = theme.colorScheme;
 
     return Container(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
-        top: 20, left: 20, right: 20,
-      ),
+      padding: EdgeInsets.only(left: 8.0, right: 8.0),
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
@@ -94,7 +91,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
         child: Column(
           mainAxisSize: .min,
           children: [
-            const SizedBox(height: 16),
+            const SizedBox(height: 8.0),
             Text(
               widget.recurringTransactionModel != null
               ? AppStrings.updateRecurringTransaction.tr()
@@ -229,7 +226,7 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                 Navigator.pop(context);
               } :
               _isFormValid
-                  ? () {
+                ? () {
                 final amount = _formatter.parse(_amountController.text.trim()).toDouble();
                 ref.read(recurringTransactionProvider.notifier).addRecurring(
                   title: _titleController.text,
@@ -242,8 +239,22 @@ class _AddRecurringTransactionScreenState extends ConsumerState<AddRecurringTran
                   isActive: true
                 );
                 Navigator.pop(context);
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(AppStrings.transactionAddedWithName.tr(
+                      namedArgs: {
+                        "title": _titleController.text.trim()
+                      }
+                    )),
+                    backgroundColor: Colors.green.shade400,
+                    behavior: SnackBarBehavior.floating,
+                    duration: Duration(seconds: 2),
+                  )
+                );
               } : null
             ),
+            const SizedBox(height: 12.0,)
           ],
         ),
       ),

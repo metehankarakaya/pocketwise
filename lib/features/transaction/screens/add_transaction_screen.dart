@@ -63,19 +63,15 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
     final colorScheme = theme.colorScheme;
 
     return Container(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
-        top: 20, left: 20, right: 20,
-      ),
+      padding: EdgeInsets.only(left: 8.0, right: 8.0,),
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: SingleChildScrollView(
         child: Column(
-          mainAxisSize: .min,
           children: [
-            const SizedBox(height: 16),
+            const SizedBox(height: 8.0),
             Text(
               widget.transactionModel != null
               ? AppStrings.updateTransaction.tr()
@@ -178,6 +174,19 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
                   _titleController.text, amount, _selectedCategory!, DateTime.now(), _selectedType!
                 );
                 Navigator.pop(context);
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(AppStrings.transactionAddedWithName.tr(
+                      namedArgs: {
+                        "title": _titleController.text.isNotEmpty ? _titleController.text : _selectedCategory!.tr()
+                      }
+                    )),
+                    backgroundColor: Colors.green.shade400,
+                    behavior: SnackBarBehavior.floating,
+                    duration: Duration(seconds: 2),
+                  )
+                );
               } : null,
             ),
           ],
