@@ -16,6 +16,9 @@
   "clearAllRecurringTransactions": "Tüm Tekrarlayan İşlemleri Temizle",
   "wasCleared": "Tüm işlemler silindi",
   "recurringTransactionsCleared": "Tüm tekrarlayan işlemler silindi",
+  "notifications": "Bildirimler",
+  "showPersistentNotification": "Kalıcı Bildirimi Göster",
+  "hidePersistentNotification": "Kalıcı Bildirimi Gizle",
   "appSecurity": "Güvenlik",
   "appLock": "Uygulama Kilidi",
 

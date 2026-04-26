@@ -16,6 +16,9 @@ class AppStrings {
   static const String clearAllTransactions = "clearAllTransactions";
   static const String wasCleared = "wasCleared";
   static const String recurringTransactionsCleared = "recurringTransactionsCleared";
+  static const String notifications = "notifications";
+  static const String showPersistentNotification = "showPersistentNotification";
+  static const String hidePersistentNotification = "hidePersistentNotification";
   static const String appSecurity = "appSecurity";
   static const String appLock = "appLock";
 

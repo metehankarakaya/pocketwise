@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocketwise/core/providers/notification_provider.dart';
 import 'package:pocketwise/core/widgets/confirmation_dialog.dart';
 import 'package:pocketwise/features/security/providers/security_provider.dart';
 import 'package:pocketwise/features/security/screens/pin_screen.dart';
@@ -24,6 +25,7 @@ class SettingsScreen extends ConsumerWidget {
 
     final themeMode = ref.watch(themeModeProvider);
     final isLockEnabled = ref.watch(securityProvider);
+    final isNotificationEnabled = ref.watch(notificationProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -143,6 +145,29 @@ class SettingsScreen extends ConsumerWidget {
               child: Column(
                 children: [
                   ListTile(
+                    title: Text(AppStrings.notifications.tr()),
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: SettingsItem(
+                      onTap: () {
+                        final notifier = ref.read(transactionProvider.notifier);
+                        ref.read(notificationProvider.notifier).toggleNotification(
+                          notifier.totalBalance,
+                          notifier.totalIncome,
+                          notifier.totalExpense,
+                        );
+                      },
+                      title: isNotificationEnabled ? AppStrings.hidePersistentNotification.tr() : AppStrings.showPersistentNotification.tr(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  ListTile(
                     trailing: Tooltip(
                       showDuration: Duration(seconds: 2),
                       message: AppStrings.pinForgotWarning.tr(),
@@ -176,7 +201,7 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

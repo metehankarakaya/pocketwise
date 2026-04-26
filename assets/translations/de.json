@@ -16,6 +16,9 @@
   "clearAllRecurringTransactions": "Alle wiederkehrenden Transaktionen löschen",
   "wasCleared": "Alle Transaktionen wurden gelöscht",
   "recurringTransactionsCleared": "Alle wiederkehrenden Transaktionen wurden gelöscht",
+  "notifications": "Benachrichtigungen",
+  "showPersistentNotification": "Dauerhafte Benachrichtigung anzeigen",
+  "hidePersistentNotification": "Dauerhafte Benachrichtigung ausblenden",
   "appSecurity": "Sicherheit",
   "appLock": "App-Sperre",
 

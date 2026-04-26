@@ -16,6 +16,9 @@
   "clearAllRecurringTransactions": "Clear All Recurring Transactions",
   "wasCleared": "All transactions were cleared",
   "recurringTransactionsCleared": "All recurring transactions were cleared",
+  "notifications": "Notifications",
+  "showPersistentNotification": "Show Persistent Notification",
+  "hidePersistentNotification": "Hide Persistent Notification",
   "appSecurity": "Security",
   "appLock": "App Lock",
 

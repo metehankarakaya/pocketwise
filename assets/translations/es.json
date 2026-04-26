@@ -16,6 +16,9 @@
   "clearAllRecurringTransactions": "Borrar todas las transacciones recurrentes",
   "wasCleared": "Se eliminaron todas las transacciones",
   "recurringTransactionsCleared": "Todas las transacciones recurrentes fueron eliminadas",
+  "notifications": "Notificaciones",
+  "showPersistentNotification": "Mostrar notificación persistente",
+  "hidePersistentNotification": "Ocultar notificación persistente",
   "appSecurity": "Seguridad",
   "appLock": "Bloqueo de la aplicación",
 
