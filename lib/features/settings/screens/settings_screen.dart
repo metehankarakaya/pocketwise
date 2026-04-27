@@ -59,7 +59,7 @@ class SettingsScreen extends ConsumerWidget {
                   Card(
                     clipBehavior: Clip.antiAlias,
                     child: SettingsItem(
-                      onTap: () => ChangeLanguageModal.show(context),
+                      onTap: () => ChangeLanguageModal.show(context, ref),
                       title: AppStrings.changeLanguage.tr(),
                     ),
                   ),
