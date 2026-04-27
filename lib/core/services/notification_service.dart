@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:pocketwise/core/constants/app_strings.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -29,7 +31,10 @@ class NotificationService {
     await _notifications.show(
       id: 0,
       title: 'PocketWise',
-      body: 'Bakiye: ₺$balance\n📈 Gelir: ₺$income  📉 Gider: ₺$expense',
+      body:
+        "${AppStrings.balanceWithAmount.tr(namedArgs: {"amount": "₺$balance"})}\n"
+        "📈 ${AppStrings.incomeWithAmount.tr(namedArgs: {"amount": "₺$income"})}  "
+        "📉 ${AppStrings.expenseWithAmount.tr(namedArgs: {"amount": "₺$expense"})}",
       notificationDetails: details,
     );
     return true;
