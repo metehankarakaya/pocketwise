@@ -22,6 +22,10 @@
   "appSecurity": "Sicherheit",
   "appLock": "App-Sperre",
 
+  "balanceWithAmount": "Kontostand {amount}",
+  "incomeWithAmount": "Einnahmen {amount}",
+  "expenseWithAmount": "Ausgaben {amount}",
+
   "restaurant": "Restaurant",
   "groceries": "Einkäufe",
   "transport": "Transport",

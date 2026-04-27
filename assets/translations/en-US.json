@@ -22,6 +22,10 @@
   "appSecurity": "Security",
   "appLock": "App Lock",
 
+  "balanceWithAmount": "Balance {amount}",
+  "incomeWithAmount": "Income {amount}",
+  "expenseWithAmount": "Expense {amount}",
+
   "restaurant": "Restaurant",
   "groceries": "Groceries",
   "transport": "Transport",

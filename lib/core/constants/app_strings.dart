@@ -22,6 +22,10 @@ class AppStrings {
   static const String appSecurity = "appSecurity";
   static const String appLock = "appLock";
 
+  static const String balanceWithAmount = "balanceWithAmount";
+  static const String incomeWithAmount = "incomeWithAmount";
+  static const String expenseWithAmount = "expenseWithAmount";
+
   static const String restaurant = "restaurant";
   static const String groceries = "groceries";
   static const String transport = "transport";

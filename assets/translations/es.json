@@ -22,6 +22,10 @@
   "appSecurity": "Seguridad",
   "appLock": "Bloqueo de la aplicación",
 
+  "balanceWithAmount": "Saldo {amount}",
+  "incomeWithAmount": "Ingresos {amount}",
+  "expenseWithAmount": "Gastos {amount}",
+
   "restaurant": "Restaurante",
   "groceries": "Compras",
   "transport": "Transporte",

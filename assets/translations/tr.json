@@ -22,6 +22,10 @@
   "appSecurity": "Güvenlik",
   "appLock": "Uygulama Kilidi",
 
+  "balanceWithAmount": "Bakiye {amount}",
+  "incomeWithAmount": "Gelir {amount}",
+  "expenseWithAmount": "Gider {amount}",
+
   "restaurant": "Restoran",
   "groceries": "Market",
   "transport": "Ulaşım",
