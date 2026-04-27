@@ -189,6 +189,7 @@ class _AddTransactionModalScreenState extends ConsumerState<AddTransactionScreen
                 );
               } : null,
             ),
+            const SizedBox(height: 12.0,)
           ],
         ),
       ),
